@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "gmail": {
+      "command": "node",
+      "args": [
+        "D:\\My Projects\\Massai Live Project Course\\Masai Jun Project\\Chief of Staff\\gmail-mcp-server\\dist\\index.js"
+      ]
+    }
+  }
+}

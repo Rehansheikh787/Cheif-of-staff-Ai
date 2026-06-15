@@ -1,0 +1,49 @@
+# ============================================================
+# Chief of Staff — Project .gitignore
+# ============================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
+# OAuth credentials — NEVER commit these
+gmail-mcp-server/config/credentials.json
+gmail-mcp-server/config/gcp-oauth.keys.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Node (gmail-mcp-server has its own .gitignore too)
+node_modules/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Test artifacts
+test_*.py
