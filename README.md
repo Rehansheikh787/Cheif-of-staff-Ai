@@ -64,8 +64,8 @@ The project utilizes a multi-layered Model Context Protocol (MCP) architecture:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/Rehansheikh787/chief-of-staff-ai.git
-   cd chief-of-staff-ai
+   git clone https://github.com/Rehansheikh787/Cheif-of-staff-Ai.git
+   cd Cheif-of-staff-Ai
    ```
 
 2. **Configure Environment Variables:**

@@ -4,7 +4,7 @@ echo   CHIEF OF STAFF EMAIL TRIAGE AGENT - GITHUB PUSH SCRIPT
 echo ============================================================
 echo.
 echo This script will safely push your project to your GitHub repository:
-echo https://github.com/Rehansheikh787/chief-of-staff-ai.git
+echo https://github.com/Rehansheikh787/Cheif-of-staff-Ai.git
 echo.
 echo It respects your .gitignore, so your OAuth credentials and API keys
 echo will NOT be uploaded to the public repository.
@@ -30,7 +30,7 @@ git branch -M main
 echo.
 echo [*] Setting remote origin...
 git remote remove origin >nul 2>&1
-git remote add origin https://github.com/Rehansheikh787/chief-of-staff-ai.git
+git remote add origin https://github.com/Rehansheikh787/Cheif-of-staff-Ai.git
 
 echo.
 echo [*] Pushing to GitHub...
