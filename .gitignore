@@ -25,6 +25,8 @@ ENV/
 # OAuth credentials — NEVER commit these
 gmail-mcp-server/config/credentials.json
 gmail-mcp-server/config/gcp-oauth.keys.json
+credentials.json
+token.json
 
 # IDE
 .idea/

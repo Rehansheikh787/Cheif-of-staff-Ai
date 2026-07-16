@@ -1,0 +1,34 @@
+{
+  "name": "Arzu Sheikh",
+  "role": "Product Manager",
+  "tone": "formal, professional and polite tone",
+  "formality": "semi-formal",
+  "sign_off": "Thanks, Arzu",
+  "quirks": [
+    "Keeps emails under 5 sentences whenever possible",
+    "Uses numbered points for any list of action items",
+    "Inserts dashes for asides — like this — instead of parentheses",
+    "Opens with a quick acknowledgment before diving into substance",
+    "Avoids corporate jargon — says 'sync' not 'align on deliverables'",
+    "Ends with a clear next step or ask, never leaves things vague"
+  ],
+  "vocabulary_preferences": {
+    "use": [
+      "sync",
+      "flag",
+      "ship",
+      "loop in",
+      "heads-up",
+      "got it"
+    ],
+    "avoid": [
+      "circle back",
+      "leverage",
+      "synergize",
+      "per my last email",
+      "as per"
+    ]
+  },
+  "formality_percent": 60,
+  "directness_percent": 73
+}

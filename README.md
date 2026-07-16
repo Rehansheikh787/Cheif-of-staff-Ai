@@ -1,98 +1,110 @@
-# Chief of Staff — Gmail Inbox Triage Agent
+# 🗄️ AI Chief of Staff — Gmail Inbox Triage & Calendar Assistant
 
-An AI-powered email triage agent that fetches your Gmail inbox threads and classifies them by priority using Google's Gemini 2.5 Flash model.
+An elegant, production-ready AI-powered email triage and calendar management dashboard built with **Streamlit**, **Google Gemini**, and a local **Model Context Protocol (MCP)** server. It automatically fetches, triages, and draft replies to your emails while managing your day's schedule from a unified, premium dark-mode workspace.
 
-## What It Does
+---
 
-1. **Fetches** your last 10 Gmail inbox threads via a local MCP (Model Context Protocol) server
-2. **Triages** each thread using Gemini AI into priority categories: `urgent`, `needs-reply`, `fyi`, `ignore`
-3. **Displays** a color-coded CLI dashboard sorted by priority
+## 🌟 Visual Showcase
 
-## Architecture
+### Welcome Screen & Authentication Flow
+![AI Chief of Staff Welcome Screen](media/screenshot_3.png)
+
+### Unified Triage & Agenda Dashboard
+![AI Chief of Staff Main Dashboard](media/feature-active-threads.png)
+
+### Live Usage Demo
+<video src="media/github-demo-merged.mp4" width="100%" autoplay loop muted controls></video>
+
+---
+
+## ✨ Features
+
+- **📬 Inbox & Triage**: Automatically fetches and categorizes your latest email threads into actionable priority buckets (`urgent`, `needs-reply`, `fyi`, `ignore`) using the Gemini 2.5 Flash model.
+- **🗓️ Today's Agenda Feed**: Real-time integration with Google Calendar API that fetches, displays, and shifts your daily schedule into your local system timezone.
+- **✍️ AI Reply Ghostwriter**: Generates contextual draft replies for emails needing attention. Adjust draft tone profiles dynamically with Formality and Directness sliders.
+- **🔐 Resilient Authentication**: Guided step-by-step setup in the UI with strict uploader validation, credentials protection, and scope-relaxed OAuth logic.
+- **🔍 Connection Diagnostics**: Instant testing utility for Google Calendar connection validity, retrieving FreeBusy slots to ensure correct configuration.
+- **📋 Action Logs**: Persistent action histories recording all sent emails and booked events with local system timezones and dates.
+
+---
+
+## 🛠️ Architecture
+
+The project utilizes a multi-layered Model Context Protocol (MCP) architecture:
 
 ```
-engine.py (Python)
-  ├── Spawns gmail-mcp-server (Node.js) as subprocess
-  │     └── Communicates via JSON-RPC over stdio
-  │     └── Authenticates via OAuth2 to Gmail API
-  ├── Passes fetched threads to triage.py
-  │     └── Classifies each thread via Gemini 2.5 Flash
-  │     └── Falls back to local regex classifier if API is down
-  └── Prints color-coded triage dashboard
+  Streamlit Frontend (app.py)
+    ├── Unified Bento Grid UI
+    ├── Local Timezone and Date conversions
+    └── Communicates via subprocess with MCP Client
+         │
+         ▼
+  Python Client Engine (engine.py)
+    ├── Auto-installs Node.js dependencies
+    ├── Synchronizes authorized tokens
+    └── Spawns Node.js Gmail MCP server
+         │
+         ▼
+  Gmail MCP Server (gmail-mcp-server)
+    ├── Connects to Google OAuth & APIs
+    └── Handles secure SMTP & Calendar queries
 ```
 
-## Setup
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
-- Python 3.12+
-- Node.js 14+
-- A Google Cloud project with Gmail API enabled
-- A Gemini API key
+- **Python 3.12+**
+- **Node.js 18+** (with npm)
+- **Google Cloud Console Credentials** (OAuth Desktop Client credentials)
+- **Gemini API Key** (from Google AI Studio)
 
-### Installation
+### Installation & Local Setup
 
-```bash
-# 1. Clone the repo and navigate to the project
-cd "Jun First week Chief of Staff"
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/Rehansheikh787/chief-of-staff-ai.git
+   cd chief-of-staff-ai
+   ```
 
-# 2. Create and activate a virtual environment
-python -m venv .venv
-.venv\Scripts\Activate.ps1   # Windows PowerShell
-# or: source .venv/bin/activate  # macOS/Linux
+2. **Configure Environment Variables:**
+   Create a `.env` file in the root directory:
+   ```env
+   GEMINI_API_KEY=your_gemini_api_key_here
+   DISABLE_RATE_LIMIT_PAUSE=true
+   ```
 
-# 3. Install Python dependencies
-pip install -r requirements.txt
+3. **Install Dependencies:**
+   Install Python dependencies in a virtual environment:
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   pip install -r requirements.txt
+   ```
 
-# 4. Install Node.js dependencies for the MCP server
-cd gmail-mcp-server
-npm install
-npm run build
-cd ..
+4. **Launch the Dashboard:**
+   ```bash
+   streamlit run app.py
+   ```
 
-# 5. Set up your Gemini API key
-# Create gmail-mcp-server/.env with:
-# GEMINI_API_KEY=your_key_here
+---
 
-# 6. Authenticate with Gmail (opens browser)
-cd gmail-mcp-server
-npm run auth
-cd ..
-```
+## ☁️ Deploying to Streamlit Community Cloud
 
-## Usage
+This project is fully optimized for container deployment on Streamlit Community Cloud.
 
-### Live Mode (fetches real Gmail threads)
-```bash
-python engine.py
-```
+1. **System Packages (`packages.txt`)**: The repository contains a `packages.txt` file which installs `nodejs` and `npm` system binaries inside Streamlit's Linux environment.
+2. **First-run Self-Healing**: When first booted, Python will automatically run `npm install` inside the `gmail-mcp-server` directory to fetch Node dependencies.
+3. **Streamlit Secrets**: Define your credentials in the **Secrets** panel of your Streamlit deployment:
+   ```toml
+   GEMINI_API_KEY = "your_actual_gemini_api_key"
+   DISABLE_RATE_LIMIT_PAUSE = "true"
+   ```
 
-### Demo Mode (uses mock data — no Gmail connection needed)
-```bash
-python engine.py --mock
-```
+---
 
-### Strict Live Mode (fails if Gmail is unreachable)
-```bash
-python engine.py --live
-```
+## 🔒 Security & Privacy
 
-## Rate Limits
-
-The Gemini free tier allows 5 requests per minute. The triage engine automatically pauses after every 4 classifications to stay within quota. For 10 threads, expect ~2 minutes total runtime.
-
-## Project Structure
-
-```
-├── engine.py                  # Main entry point — MCP client + CLI dashboard
-├── requirements.txt           # Python dependencies
-├── .gitignore                 # Git ignore rules
-├── chief_of_staff.ipynb       # Jupyter notebook (alternative runner)
-└── gmail-mcp-server/          # Gmail MCP server (Node.js)
-    ├── triage.py              # Gemini triage logic + fallback classifier
-    ├── .env                   # Gemini API key (gitignored)
-    ├── config/
-    │   ├── gcp-oauth.keys.json   # OAuth client config (gitignored)
-    │   └── credentials.json      # OAuth tokens (gitignored)
-    ├── src/                   # TypeScript source
-    └── dist/                  # Compiled JavaScript
-```
+- **Safe Git exclusion**: `.env`, `credentials.json`, and `token.json` are globally ignored via `.gitignore`. Your private keys, OAuth tokens, and Google API secrets will **never** be committed to GitHub.
+- **Subprocess Isolation**: Communication with Google APIs is piped securely through standard input/output using JSON-RPC, keeping access keys private inside the process context.

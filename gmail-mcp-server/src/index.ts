@@ -22,8 +22,9 @@ import { createFilter, listFilters, getFilter, deleteFilter, filterTemplates, Gm
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Configuration paths
-const CONFIG_DIR = path.join(os.homedir(), '.gmail-mcp');
+// Configuration paths - prioritize local config directory if it exists
+const PROJECT_CONFIG_DIR = path.join(__dirname, '..', 'config');
+const CONFIG_DIR = fs.existsSync(PROJECT_CONFIG_DIR) ? PROJECT_CONFIG_DIR : path.join(os.homedir(), '.gmail-mcp');
 const OAUTH_PATH = process.env.GMAIL_OAUTH_PATH || path.join(CONFIG_DIR, 'gcp-oauth.keys.json');
 const CREDENTIALS_PATH = process.env.GMAIL_CREDENTIALS_PATH || path.join(CONFIG_DIR, 'credentials.json');
 
@@ -102,12 +103,10 @@ async function loadCredentials() {
 
         // Check for OAuth keys in current directory first, then in config directory
         const localOAuthPath = path.join(process.cwd(), 'gcp-oauth.keys.json');
-        let oauthPath = OAUTH_PATH;
-
         if (fs.existsSync(localOAuthPath)) {
             // If found in current directory, copy to config directory
             fs.copyFileSync(localOAuthPath, OAUTH_PATH);
-            console.log('OAuth keys found in current directory, copied to global config.');
+            console.error('OAuth keys found in current directory, copied to global config.');
         }
 
         if (!fs.existsSync(OAUTH_PATH)) {
@@ -125,7 +124,7 @@ async function loadCredentials() {
 
         const callback = process.argv[2] === 'auth' && process.argv[3] 
         ? process.argv[3] 
-        : "http://localhost:3000/oauth2callback";
+        : "http://localhost:3000";
 
         oauth2Client = new OAuth2Client(
             keys.client_id,
@@ -137,6 +136,20 @@ async function loadCredentials() {
             const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_PATH, 'utf8'));
             oauth2Client.setCredentials(credentials);
         }
+
+        oauth2Client.on('tokens', (tokens) => {
+            try {
+                let current = {};
+                if (fs.existsSync(CREDENTIALS_PATH)) {
+                    current = JSON.parse(fs.readFileSync(CREDENTIALS_PATH, 'utf8'));
+                }
+                const updated = { ...current, ...tokens };
+                fs.writeFileSync(CREDENTIALS_PATH, JSON.stringify(updated, null, 2));
+                console.error('Successfully saved refreshed tokens to credentials.json');
+            } catch (err: any) {
+                console.error('Failed to save refreshed tokens:', err.message);
+            }
+        });
     } catch (error) {
         console.error('Error loading credentials:', error);
         process.exit(1);
@@ -152,38 +165,34 @@ async function authenticate() {
             access_type: 'offline',
             scope: [
                 'https://www.googleapis.com/auth/gmail.modify',
-                'https://www.googleapis.com/auth/gmail.settings.basic'
+                'https://www.googleapis.com/auth/gmail.settings.basic',
+                'https://www.googleapis.com/auth/calendar',
+                'https://www.googleapis.com/auth/calendar.events'
             ],
+            prompt: 'consent'
         });
 
-        console.log('Please visit this URL to authenticate:', authUrl);
+        console.error('Please visit this URL to authenticate:', authUrl);
         open(authUrl);
 
         server.on('request', async (req, res) => {
-            if (!req.url?.startsWith('/oauth2callback')) return;
-
-            const url = new URL(req.url, 'http://localhost:3000');
+            const url = new URL(req.url || '', 'http://localhost:3000');
             const code = url.searchParams.get('code');
 
-            if (!code) {
-                res.writeHead(400);
-                res.end('No code provided');
-                reject(new Error('No code provided'));
-                return;
-            }
+            if (!code) return;
 
             try {
                 const { tokens } = await oauth2Client.getToken(code);
                 oauth2Client.setCredentials(tokens);
                 fs.writeFileSync(CREDENTIALS_PATH, JSON.stringify(tokens));
 
-                res.writeHead(200);
-                res.end('Authentication successful! You can close this window.');
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end('<h1>Authentication successful!</h1><p>You can close this window now.</p>');
                 server.close();
                 resolve();
-            } catch (error) {
-                res.writeHead(500);
-                res.end('Authentication failed');
+            } catch (error: any) {
+                res.writeHead(500, { 'Content-Type': 'text/html' });
+                res.end(`<h1>Authentication failed</h1><p>${error.message}</p>`);
                 reject(error);
             }
         });
@@ -317,6 +326,35 @@ const DownloadAttachmentSchema = z.object({
     savePath: z.string().optional().describe("Directory path to save the attachment (defaults to current directory)"),
 });
 
+const ListCalendarEventsSchema = z.object({
+    calendarId: z.string().optional().default("primary").describe("Calendar identifier, defaults to 'primary'"),
+    timeMin: z.string().optional().describe("ISO string for start time threshold (e.g. '2026-06-25T00:00:00Z')"),
+    timeMax: z.string().optional().describe("ISO string for end time threshold"),
+    maxResults: z.number().optional().default(10).describe("Maximum number of events to return"),
+    singleEvents: z.boolean().optional().default(true).describe("Expand recurring events into single events"),
+    orderBy: z.enum(['startTime', 'updated']).optional().default('startTime').describe("Sort order of results")
+}).describe("List upcoming calendar events");
+
+const CreateCalendarEventSchema = z.object({
+    calendarId: z.string().optional().default("primary").describe("Calendar identifier, defaults to 'primary'"),
+    summary: z.string().describe("Title of the event"),
+    description: z.string().optional().describe("Description of the event"),
+    location: z.string().optional().describe("Location of the event"),
+    startTime: z.string().describe("ISO string for start time (e.g., '2026-06-25T15:00:00+05:30' or '2026-06-25T15:00:00Z')"),
+    endTime: z.string().describe("ISO string for end time (e.g., '2026-06-25T16:00:00+05:30' or '2026-06-25T16:00:00Z')"),
+    attendees: z.array(z.string()).optional().describe("List of attendee email addresses")
+}).describe("Create a new calendar event");
+
+const QuickAddCalendarEventSchema = z.object({
+    calendarId: z.string().optional().default("primary").describe("Calendar identifier, defaults to 'primary'"),
+    text: z.string().describe("Quick add text string (e.g., 'Masai Project Review on Wed 3pm-4pm')")
+}).describe("Quickly add a calendar event using a text string");
+
+const DeleteCalendarEventSchema = z.object({
+    calendarId: z.string().optional().default("primary").describe("Calendar identifier"),
+    eventId: z.string().describe("Event ID to delete")
+}).describe("Delete an event from the calendar");
+
 
 // Main function
 async function main() {
@@ -330,6 +368,8 @@ async function main() {
 
     // Initialize Gmail API
     const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
+    // Initialize Calendar API
+    const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
 
     // Server implementation
     const server = new Server({
@@ -437,6 +477,26 @@ async function main() {
                 name: "download_attachment",
                 description: "Downloads an email attachment to a specified location",
                 inputSchema: zodToJsonSchema(DownloadAttachmentSchema),
+            },
+            {
+                name: "list_calendar_events",
+                description: "Retrieves upcoming events from Google Calendar",
+                inputSchema: zodToJsonSchema(ListCalendarEventsSchema),
+            },
+            {
+                name: "create_calendar_event",
+                description: "Creates a new event in Google Calendar",
+                inputSchema: zodToJsonSchema(CreateCalendarEventSchema),
+            },
+            {
+                name: "quick_add_calendar_event",
+                description: "Quickly creates a new Google Calendar event using a text string description",
+                inputSchema: zodToJsonSchema(QuickAddCalendarEventSchema),
+            },
+            {
+                name: "delete_calendar_event",
+                description: "Deletes an event from Google Calendar",
+                inputSchema: zodToJsonSchema(DeleteCalendarEventSchema),
             },
         ],
     }))
@@ -1180,6 +1240,150 @@ async function main() {
                                     text: `Failed to download attachment: ${error.message}`,
                                 },
                             ],
+                        };
+                    }
+                }
+
+                case "list_calendar_events": {
+                    const validatedArgs = ListCalendarEventsSchema.parse(args);
+                    try {
+                        const response = await calendar.events.list({
+                            calendarId: validatedArgs.calendarId,
+                            timeMin: validatedArgs.timeMin,
+                            timeMax: validatedArgs.timeMax,
+                            maxResults: validatedArgs.maxResults,
+                            singleEvents: validatedArgs.singleEvents,
+                            orderBy: validatedArgs.orderBy,
+                        });
+                        
+                        const events = response.data.items || [];
+                        const resultPayload = {
+                            events: events.map((e: any) => ({
+                                id: e.id,
+                                summary: e.summary,
+                                description: e.description || "",
+                                location: e.location || "",
+                                start: e.start.dateTime || e.start.date,
+                                end: e.end.dateTime || e.end.date,
+                                attendees: e.attendees ? e.attendees.map((a: any) => a.email) : []
+                            }))
+                        };
+                        
+                        return {
+                            content: [
+                                {
+                                    type: "text",
+                                    text: JSON.stringify(resultPayload),
+                                },
+                            ],
+                        };
+                    } catch (error: any) {
+                        return {
+                            content: [{ type: "text", text: `Failed to list calendar events: ${error.message}` }],
+                        };
+                    }
+                }
+
+                case "create_calendar_event": {
+                    const validatedArgs = CreateCalendarEventSchema.parse(args);
+                    try {
+                        const response = await calendar.events.insert({
+                            calendarId: validatedArgs.calendarId,
+                            requestBody: {
+                                summary: validatedArgs.summary,
+                                description: validatedArgs.description,
+                                location: validatedArgs.location,
+                                start: { dateTime: validatedArgs.startTime },
+                                end: { dateTime: validatedArgs.endTime },
+                                attendees: validatedArgs.attendees ? validatedArgs.attendees.map(email => ({ email })) : undefined,
+                            }
+                        });
+                        
+                        const event = response.data;
+                        const resultPayload = {
+                            status: "success",
+                            eventId: event.id,
+                            htmlLink: event.htmlLink,
+                            summary: event.summary,
+                            start: event.start?.dateTime || event.start?.date,
+                            end: event.end?.dateTime || event.end?.date,
+                            message: `Event created successfully: ${event.summary} (ID: ${event.id})`
+                        };
+                        
+                        return {
+                            content: [
+                                {
+                                    type: "text",
+                                    text: JSON.stringify(resultPayload),
+                                },
+                            ],
+                        };
+                    } catch (error: any) {
+                        return {
+                            content: [{ type: "text", text: `Failed to create calendar event: ${error.message}` }],
+                        };
+                    }
+                }
+
+                case "quick_add_calendar_event": {
+                    const validatedArgs = QuickAddCalendarEventSchema.parse(args);
+                    try {
+                        const response = await calendar.events.quickAdd({
+                            calendarId: validatedArgs.calendarId,
+                            text: validatedArgs.text
+                        });
+                        
+                        const event = response.data;
+                        const resultPayload = {
+                            status: "success",
+                            eventId: event.id,
+                            htmlLink: event.htmlLink,
+                            summary: event.summary,
+                            start: event.start?.dateTime || event.start?.date,
+                            end: event.end?.dateTime || event.end?.date,
+                            message: `Event quick-added successfully: ${event.summary} (ID: ${event.id})`
+                        };
+                        
+                        return {
+                            content: [
+                                {
+                                    type: "text",
+                                    text: JSON.stringify(resultPayload),
+                                },
+                            ],
+                        };
+                    } catch (error: any) {
+                        return {
+                            content: [{ type: "text", text: `Failed to quick-add calendar event: ${error.message}` }],
+                        };
+                    }
+                }
+
+                case "delete_calendar_event": {
+                    const validatedArgs = DeleteCalendarEventSchema.parse(args);
+                    try {
+                        await calendar.events.delete({
+                            calendarId: validatedArgs.calendarId,
+                            eventId: validatedArgs.eventId
+                        });
+                        
+                        const resultPayload = {
+                            status: "success",
+                            eventId: validatedArgs.eventId,
+                            message: `Event ${validatedArgs.eventId} deleted successfully.`
+                        };
+                        
+                        return {
+                            content: [
+                                {
+                                    type: "text",
+                                    text: JSON.stringify(resultPayload),
+                                },
+                            ],
+                        };
+                    } catch (error: any) {
+                        return {
+                            content: [{ type: "text", text: `Failed to delete calendar event: ${error.message}` }],
                         };
                     }
                 }

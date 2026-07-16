@@ -1,0 +1,8 @@
+1. INITIALIZE RESPONSE:
+'{"result":{"protocolVersion":"2024-11-05","capabilities":{"tools":{}},"serverInfo":{"name":"gmail","version":"1.0.0","capabilities":{"tools":{}}}},"jsonrpc":"2.0","id":1}\n'
+
+2. TOOL CALL RESPONSE:
+'{"result":{"content":[{"type":"text","text":"Failed to list calendar events: invalid_grant"}]},"jsonrpc":"2.0","id":2}\n'
+
+STDERR OUTPUT:
+

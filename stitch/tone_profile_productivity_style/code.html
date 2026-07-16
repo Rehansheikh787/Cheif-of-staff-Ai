@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tone Profile - AI Chief of Staff</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Sora', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style data-purpose="custom-utilities">
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  .gradient-text {
+    background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gradient-btn {
+    background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+    transition: opacity 0.2s ease;
+  }
+  
+  .gradient-btn:hover {
+    opacity: 0.9;
+  }
+
+  .mesh-bg {
+    background-color: #ffffff;
+    background-image: 
+      radial-gradient(at 10% 10%, hsla(210,100%,90%,0.8) 0px, transparent 50%),
+      radial-gradient(at 90% 10%, hsla(160,100%,90%,0.8) 0px, transparent 50%),
+      radial-gradient(at 50% 90%, hsla(280,100%,90%,0.8) 0px, transparent 50%);
+  }
+
+  .icon-base {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+</style>
+</head>
+<body class="h-screen w-screen overflow-hidden text-slate-800 font-sans antialiased bg-cover bg-center bg-no-repeat" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLtNmwsqxn_gtXuaMpB7w0TeOWQ5WqM1-fwkUVoovR33XD9UTXvAYq6rxrPrVzkRnctFB8H0twaLyx2b0iCKmbzD1OEmfEb8P9NY_AiNTnJyLAVpjk2gqVtqgzvwT1LB7Xm2DSNtgkZG6XWm3E59AozKDMzmzH_cJ0o2pWTFxZ9q9gHG9YHefceWX-dBn0ghU-3glcylkZGdabDh-MtCOP1dDAuJv2i88YZOiB_NGOiqLYnl8NTOmhrZu8p9');">
+<!-- BEGIN: Main Layout -->
+<div class="flex h-full w-full">
+<!-- BEGIN: Sidebar -->
+<aside class="glass-panel w-72 h-full flex flex-col border-r border-white/40 shadow-xl z-10 flex-shrink-0 hidden md:flex">
+<!-- Header / Logo -->
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center border border-white/50 relative overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A futuristic avatar portrait of a high-level executive in a cyberpunk setting. Dark moody lighting with subtle neon pink and cyan rim lights reflecting off metallic cybernetic implants or high-tech eyewear. Space Grotesk minimal vibe, neon tokyo aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaw-Rowjg9J3u6D4n5HRdVD2yq4BM_QZFip-3y6hLHQNoBIKnX6ttIyT9oS0fZ4yqI7mwMviRtQYDeVTWcD5mz2MNK9fdo6bb_9M507LHN0ON8d-DU1b8MzjtsfCGwiUPd6pT5WZ73LfYbDVMcnFr9CWPDL9luHie809KfRxcSSkvtoTq3nQcIb7hd8YG4FgI4oHOT87ERqqMQMQon1FTrXovgku1nPcYUCCHUgSelGxCpu2CLE3XgyA"/>
+</div>
+<div>
+<h1 class="text-lg font-bold tracking-tight text-slate-800">AI Chief of Staff</h1>
+<p class="text-xs text-slate-500">Executive Workspace</p>
+</div>
+</div>
+<!-- Action Button -->
+<div class="px-6 pb-4">
+<button class="w-full flex items-center justify-center gap-2 bg-white/80 hover:bg-white border border-slate-200 text-slate-700 font-medium py-2 px-4 rounded-lg shadow-sm transition-colors duration-200 backdrop-blur-md">
+<span class="material-symbols-outlined text-[20px] text-slate-600">add</span>
+          New Triage Flow
+        </button>
+</div>
+<div class="px-6 py-2">
+<a class="flex items-center gap-3 text-slate-600 font-medium py-2 cursor-pointer hover:text-slate-900 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dynamic_form</span>
+<span>Chief of Staff Flow</span>
+</a>
+<a class="flex items-center gap-3 text-emerald-600 font-medium py-2 cursor-pointer hover:text-emerald-700 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span>App Settings</span>
+</a>
+</div>
+<div class="px-6 py-4 flex-1 overflow-y-auto">
+<h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Workflow</h3>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-blue-500">inbox</span>
+            Inbox &amp; Triage
+          </a>
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-emerald-500">edit_note</span>
+            Draft Generation
+          </a>
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-amber-500">verified_user</span>
+            Approval Gate
+          </a>
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-rose-500">file_export</span>
+            Export Proof
+          </a>
+</nav>
+<h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 mt-6">Data Source</h3>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-sky-500">data_thresholding</span>
+            Sample
+          </a>
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+            Gmail
+          </a>
+</nav>
+</div>
+</aside>
+<!-- END: Sidebar -->
+<!-- BEGIN: Main Content Area -->
+<main class="flex-1 flex flex-col relative z-0 h-screen overflow-hidden">
+<!-- Top Navbar -->
+<header class="glass-panel h-16 flex items-center justify-between px-8 border-b border-white/40 sticky top-0 z-20">
+<div class="flex items-center gap-4">
+<h2 class="text-xl font-semibold text-slate-800">Workspace</h2>
+<nav class="hidden lg:flex items-center gap-6 ml-8">
+<a class="text-slate-500 hover:text-slate-800 transition-colors duration-200 text-sm font-medium" href="#">Dashboard</a>
+<a class="text-slate-500 hover:text-slate-800 transition-colors duration-200 text-sm font-medium" href="#">Analytics</a>
+<a class="text-slate-500 hover:text-slate-800 transition-colors duration-200 text-sm font-medium" href="#">Team</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-500 hover:text-slate-800 transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="text-slate-500 hover:text-slate-800 transition-colors">
+<span class="material-symbols-outlined text-xl">help_outline</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-slate-200 border border-white/50 overflow-hidden ml-2">
+<img class="w-full h-full object-cover" data-alt="A futuristic avatar portrait of a high-level executive in a cyberpunk setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi4NImIgUQYaKnE091t0PcZEhIfI7PEkVofvLWuZP1q2OPYfMCBdtYP_qtsTSFnOCVraxWW0XfC59Q5tPTJWQPFu3C6fXpJgDWyeCklv1NIfJuOyb5Di1gKxxzFs89u0ar1ZN802YFvP9x3YweV_NkXfWmFOnCa70XWwltMwIxItzoNIWbAvx2ATGwD6OU7tsF0K3wjY9ViOfjzN9GDDiyLJH_Cls1i8H_HE0XAxz-c_SU8pnI7Hnegw"/>
+</div>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-6 lg:p-10">
+<div class="max-w-4xl mx-auto pb-20">
+<!-- Page Header -->
+<div class="mb-10">
+<h2 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-800 mb-2 flex items-center gap-3">
+<span class="material-symbols-outlined text-4xl text-blue-500" style="font-variation-settings: 'FILL' 1;">tune</span>
+                            Tone Profile
+                        </h2>
+<p class="text-slate-600 text-lg max-w-2xl leading-relaxed mt-4">Configure how your AI Chief of Staff communicates on your behalf. These settings dictate the baseline persona applied to generated drafts, emails, and triage responses.</p>
+</div>
+<!-- Bento Grid Layout for Settings -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Identity Section (Spans 8 cols) -->
+<div class="lg:col-span-8 glass-panel rounded-2xl p-6 lg:p-8 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-transparent opacity-50"></div>
+<h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-purple-500">badge</span>
+                                Executive Identity
+                            </h3>
+<div class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider">Your Name</label>
+<input class="w-full bg-white/60 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder-slate-400" placeholder="e.g. Jane Doe" type="text" value="Jane Doe"/>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider">Your Role</label>
+<input class="w-full bg-white/60 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder-slate-400" placeholder="e.g. Director of Ops" type="text" value="Chief Executive Officer"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider">Email Sign-off / Signature</label>
+<textarea class="w-full bg-white/60 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder-slate-400 resize-none" placeholder="Best,
+Jane
+
+Jane Doe | CEO" rows="3">Best,
+Jane
+
+Jane Doe | Chief Executive Officer</textarea>
+</div>
+</div>
+</div>
+<!-- Analysis Preview (Spans 4 cols) -->
+<div class="lg:col-span-4 glass-panel rounded-2xl p-6 lg:p-8 flex flex-col relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-transparent opacity-50"></div>
+<h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-500">psychology</span>
+                                Persona Match
+                            </h3>
+<p class="text-sm text-slate-600 mb-6">The AI currently interprets your base communication style as:</p>
+<div class="space-y-4 flex-1">
+<div class="bg-white/60 p-4 rounded-xl border border-slate-200 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-blue-500"></div>
+<h4 class="text-blue-600 font-semibold text-xs mb-1 uppercase tracking-wider">Formality</h4>
+<div class="w-full bg-slate-200 h-2 rounded-full mt-2 overflow-hidden">
+<div class="bg-blue-500 h-full w-[75%] rounded-full shadow-[0_0_8px_rgba(59,130,246,0.6)]"></div>
+</div>
+</div>
+<div class="bg-white/60 p-4 rounded-xl border border-slate-200 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-purple-500"></div>
+<h4 class="text-purple-600 font-semibold text-xs mb-1 uppercase tracking-wider">Directness</h4>
+<div class="w-full bg-slate-200 h-2 rounded-full mt-2 overflow-hidden">
+<div class="bg-purple-500 h-full w-[90%] rounded-full shadow-[0_0_8px_rgba(139,92,246,0.6)]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Communication Tone Full Width -->
+<div class="lg:col-span-12 glass-panel rounded-2xl p-6 lg:p-8 mt-2 relative overflow-hidden">
+<h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-500">record_voice_over</span>
+                                Communication Tone Settings
+                            </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<!-- Tone Toggle Cards -->
+<label class="cursor-pointer group">
+<input checked="" class="peer sr-only" name="tone" type="radio" value="professional"/>
+<div class="bg-white/60 border-2 border-slate-200 rounded-xl p-5 peer-checked:border-blue-500 peer-checked:bg-blue-50/50 transition-all duration-300 h-full flex flex-col">
+<div class="flex justify-between items-center mb-3">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-blue-500 peer-checked:text-blue-600 transition-colors">business_center</span>
+<div class="w-4 h-4 rounded-full border-2 border-slate-300 peer-checked:border-blue-500 peer-checked:bg-blue-500 flex items-center justify-center transition-all"></div>
+</div>
+<h4 class="font-bold text-slate-800 mb-1 peer-checked:text-blue-700 transition-colors">Professional &amp; Crisp</h4>
+<p class="text-xs text-slate-600">Direct, clear, and business-oriented. Minimal fluff, high impact.</p>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="tone" type="radio" value="warm"/>
+<div class="bg-white/60 border-2 border-slate-200 rounded-xl p-5 peer-checked:border-blue-500 peer-checked:bg-blue-50/50 transition-all duration-300 h-full flex flex-col">
+<div class="flex justify-between items-center mb-3">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-purple-500 peer-checked:text-purple-600 transition-colors">volunteer_activism</span>
+<div class="w-4 h-4 rounded-full border-2 border-slate-300 peer-checked:border-blue-500 peer-checked:bg-blue-500 flex items-center justify-center transition-all"></div>
+</div>
+<h4 class="font-bold text-slate-800 mb-1 peer-checked:text-purple-700 transition-colors">Warm &amp; Empathetic</h4>
+<p class="text-xs text-slate-600">Friendly, approachable, and considerate. Ideal for internal team comms.</p>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="tone" type="radio" value="custom"/>
+<div class="bg-white/60 border-2 border-slate-200 rounded-xl p-5 peer-checked:border-blue-500 peer-checked:bg-blue-50/50 transition-all duration-300 h-full flex flex-col">
+<div class="flex justify-between items-center mb-3">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-emerald-500 peer-checked:text-emerald-600 transition-colors">app_registration</span>
+<div class="w-4 h-4 rounded-full border-2 border-slate-300 peer-checked:border-blue-500 peer-checked:bg-blue-500 flex items-center justify-center transition-all"></div>
+</div>
+<h4 class="font-bold text-slate-800 mb-1 peer-checked:text-emerald-700 transition-colors">Custom Directive</h4>
+<p class="text-xs text-slate-600">Define specific rules for the AI to follow in all communications.</p>
+</div>
+</label>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider">Custom Tone Instructions (Optional)</label>
+<textarea class="w-full bg-white/60 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder-slate-400 resize-none" placeholder="Always start emails to external clients with a pleasantry. Never use exclamation marks. Keep paragraphs under 3 sentences." rows="4"></textarea>
+</div>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="mt-10 flex justify-end">
+<button class="bg-white/80 hover:bg-white text-slate-700 font-medium py-3 px-6 rounded-xl border border-slate-200 shadow-sm transition-colors mr-4">
+                            Cancel
+                        </button>
+<button class="gradient-btn text-white font-semibold py-3 px-8 rounded-xl shadow-[0_4px_14px_0_rgba(59,130,246,0.39)] transition-transform hover:scale-[1.02] active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">save</span>
+<span>Save Profile Settings</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- END: Main Content Area -->
+</div>
+<!-- END: Main Layout -->
+</body></html>

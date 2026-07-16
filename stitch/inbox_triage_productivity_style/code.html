@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inbox &amp; Triage - AI Chief of Staff</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        "headline": ["Sora", "sans-serif"],
+                        "display": ["Sora", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Space Grotesk", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.05);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-btn {
+            background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+            transition: opacity 0.2s ease;
+        }
+        
+        .gradient-btn:hover {
+            opacity: 0.9;
+        }
+
+        .icon-base {
+            width: 1.25rem;
+            height: 1.25rem;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen overflow-hidden text-slate-800 font-body antialiased bg-cover bg-center bg-no-repeat" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLtNmwsqxn_gtXuaMpB7w0TeOWQ5WqM1-fwkUVoovR33XD9UTXvAYq6rxrPrVzkRnctFB8H0twaLyx2b0iCKmbzD1OEmfEb8P9NY_AiNTnJyLAVpjk2gqVtqgzvwT1LB7Xm2DSNtgkZG6XWm3E59AozKDMzmzH_cJ0o2pWTFxZ9q9gHG9YHefceWX-dBn0ghU-3glcylkZGdabDh-MtCOP1dDAuJv2i88YZOiB_NGOiqLYnl8NTOmhrZu8p9');">
+<!-- BEGIN: Main Layout -->
+<div class="flex h-full w-full">
+<!-- BEGIN: Sidebar -->
+<aside class="glass-panel w-72 h-full flex flex-col border-r border-white/40 shadow-xl z-10 flex-shrink-0">
+<!-- Header / Logo -->
+<div class="p-6 flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<svg class="w-8 h-8 text-slate-700" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+<path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5.7"></path>
+<circle cx="12" cy="12" r="3"></circle>
+<path d="m19.07 4.93-2.83 2.83M4.93 19.07l2.83-2.83M2 12h4M18 12h4M12 2v4M12 18v4M4.93 4.93l2.83 2.83M19.07 19.07l-2.83-2.83"></path>
+</svg>
+<h1 class="text-xl font-headline font-bold tracking-tight text-slate-800">AI Chief of Staff</h1>
+</div>
+<p class="text-xs text-slate-500 font-label ml-11">Executive Workspace</p>
+</div>
+<!-- Action Button -->
+<div class="px-6 pb-4">
+<button class="w-full flex items-center justify-center gap-2 bg-white/80 hover:bg-white border border-slate-200 text-slate-700 font-medium py-2 px-4 rounded-lg shadow-sm transition-colors duration-200 backdrop-blur-md text-sm font-label">
+<span class="material-symbols-outlined text-lg">add</span>
+          New Triage Flow
+        </button>
+</div>
+<div class="px-6 py-2">
+<div class="flex items-center gap-3 text-slate-600 font-medium py-2 cursor-pointer hover:text-slate-900 transition-colors font-label text-sm">
+<svg class="icon-base text-emerald-500" viewbox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5Z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+<span>Chief of Staff Flow</span>
+</div>
+<div class="flex items-center gap-3 text-slate-600 font-medium py-2 cursor-pointer hover:text-slate-900 transition-colors font-label text-sm">
+<svg class="icon-base text-amber-500" viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+<span>App Settings</span>
+</div>
+</div>
+<div class="px-6 py-4 flex-1 overflow-y-auto">
+<h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 font-label">Workflow</h3>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-2 py-2 text-slate-800 hover:bg-slate-100/50 rounded-md transition-colors bg-slate-100/40 font-medium font-label text-sm border-l-4 border-blue-500" href="#">
+<svg class="icon-base text-blue-500" viewbox="0 0 24 24"><rect height="16" rx="2" ry="2" width="18" x="3" y="4"></rect><path d="M3 10h18"></path><path d="M12 16v-6"></path><path d="M8 12h8"></path></svg>
+            Inbox &amp; Triage
+          </a>
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium font-label text-sm" href="#">
+<svg class="icon-base text-emerald-500" viewbox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            Draft Generation
+          </a>
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium font-label text-sm" href="#">
+<svg class="icon-base text-amber-500" viewbox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5c-1.1 0-2 .9-2 2v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+            Approval Gate
+          </a>
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium font-label text-sm" href="#">
+<svg class="icon-base text-rose-500" viewbox="0 0 24 24"><path d="M10 3H6a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4M16 17l5-5-5-5M19.8 12H9"></path></svg>
+            Export Proof
+          </a>
+</nav>
+</div>
+<div class="px-6 py-4">
+<h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 font-label">Data Source</h3>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium font-label text-sm" href="#">
+<svg class="icon-base text-sky-500" viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            Sample
+          </a>
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium font-label text-sm" href="#">
+<svg class="icon-base" viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" fill="#4285F4"></path><path d="M20 4v10l-8-5-8 5V4c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2z" fill="#34A853"></path><path d="M12 14l8 5H4z" fill="#FBBC05"></path><path d="M20 19v-5l-8 5-8-5v5h16z" fill="#EA4335"></path></svg>
+            Gmail
+          </a>
+</nav>
+</div>
+</aside>
+<!-- END: Sidebar -->
+<!-- BEGIN: Main Content Area -->
+<main class="flex-1 flex flex-col relative z-0 h-full overflow-hidden">
+<!-- Top Navbar -->
+<header class="glass-panel h-16 flex items-center justify-between px-8 border-b border-white/40 sticky top-0 z-20 flex-shrink-0">
+<div class="flex items-center gap-8">
+<h2 class="text-xl font-headline font-semibold text-slate-800">Workspace</h2>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-500 hover:text-slate-800 transition-colors duration-200 text-sm font-label" href="#">Dashboard</a>
+<a class="text-slate-500 hover:text-slate-800 transition-colors duration-200 text-sm font-label" href="#">Analytics</a>
+<a class="text-slate-500 hover:text-slate-800 transition-colors duration-200 text-sm font-label" href="#">Team</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="bg-white/50 border border-slate-200 rounded-full pl-9 pr-4 py-1.5 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all w-64 font-body" placeholder="Search..." type="text"/>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden border border-slate-300 ml-2">
+<img class="w-full h-full object-cover" data-alt="Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpuRNKSfx8ve95yU9xeS-IKV8wgSpDjqLjNHCq3MZRjFgIPLXwsi7rIM2snY_YeXdC7OUu6u3T3hz_j7avIGfJgr4fgL1FlR2x5ICNrRARXJo35Dx3-4exE3YERCyUw0M8YfNHd-bkB1pHwYxSyzybk2pLV9CB941kH-B4Fdz_B8xKvub-qke_UgzXFSve0o-P_LzpSuwUMkZmBHJEprWSIBOFAoyZMiHid0buJDj_fwJ3VjYTQ-IEZA"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="flex-1 overflow-y-auto p-6">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 h-full pb-10">
+<!-- Left Column: Active Threads Feed -->
+<div class="lg:col-span-4 flex flex-col gap-4">
+<div class="flex items-center justify-between mb-2">
+<h2 class="font-headline font-bold text-xl text-slate-800 flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-500" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                            Active Threads Feed
+                        </h2>
+<span class="bg-amber-100 text-amber-700 px-2 py-0.5 rounded text-xs font-label font-bold border border-amber-200">3 Priority</span>
+</div>
+<!-- Thread Card 1 -->
+<div class="glass-card rounded-xl p-4 relative overflow-hidden group hover:bg-white/80 transition-colors border-l-4 border-l-blue-500">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden border border-slate-300">
+<img class="w-full h-full object-cover" data-alt="Alex" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU1Uc33DJYwHYuvN9GdX8m53mBNdQF8DRhNqIBrOGBEMjiBKBjOfL9Mc4tylqCxXd5zbdt1C64ywfAVLLewlwVEKDQ9Ut_HINCxdftQRPYRZPWC67nM-Jec5p7CS36dgIMTsuXanMgdWMTnwhC2rfI221zZsNzmTG-XGMhpD9Oyb_uMVcGiC7i3QRFQ0hMBE0Q6ZUZ7kI1R1rjG3aZv60HewMCmdbBjvPEPahql1YvwVCVx1_YJpAQdg"/>
+</div>
+<div>
+<h3 class="font-label font-bold text-sm text-slate-800">Alex Chen</h3>
+<p class="text-xs text-slate-500">2m ago</p>
+</div>
+</div>
+<span class="bg-rose-100 text-rose-700 px-2 py-0.5 rounded text-[10px] font-label font-bold uppercase tracking-wider border border-rose-200">Action Required</span>
+</div>
+<h4 class="font-body font-semibold text-sm text-slate-800 mb-2">Q3 Board Deck - Final Review</h4>
+<p class="text-xs text-slate-600 line-clamp-2 mb-4">I've attached the latest iteration. We need your sign-off before end of day. Can you review slides 12-15 specifically?</p>
+<button class="w-full bg-blue-50 text-blue-700 border border-blue-200 rounded py-2 text-xs font-label font-bold flex items-center justify-center gap-2 hover:bg-blue-100 transition-colors">
+<span class="material-symbols-outlined text-sm">edit_document</span>
+                            Review Draft
+                        </button>
+</div>
+<!-- Thread Card 2 -->
+<div class="glass-card rounded-xl p-4 relative overflow-hidden group hover:bg-white/80 transition-colors">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-emerald-100 overflow-hidden border border-emerald-200 flex items-center justify-center text-emerald-700 font-bold text-sm">
+                                    DR
+                                </div>
+<div>
+<h3 class="font-label font-bold text-sm text-slate-800">Divya Rao</h3>
+<p class="text-xs text-slate-500">15m ago</p>
+</div>
+</div>
+<span class="bg-rose-100 text-rose-700 px-2 py-0.5 rounded text-[10px] font-label font-bold uppercase tracking-wider border border-rose-200">Action Required</span>
+</div>
+<h4 class="font-body font-semibold text-sm text-slate-800 mb-2">Vendor Negotiation: Apex Tech</h4>
+<p class="text-xs text-slate-600 line-clamp-2 mb-4">They are pushing back on the SLA terms in section 4. Should we concede or hold our ground?</p>
+<button class="w-full bg-blue-50 text-blue-700 border border-blue-200 rounded py-2 text-xs font-label font-bold flex items-center justify-center gap-2 hover:bg-blue-100 transition-colors">
+<span class="material-symbols-outlined text-sm">edit_document</span>
+                            Review Draft
+                        </button>
+</div>
+<!-- Thread Card 3 -->
+<div class="glass-card rounded-xl p-4 relative overflow-hidden group hover:bg-white/80 transition-colors opacity-80">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-purple-100 overflow-hidden border border-purple-200 flex items-center justify-center text-purple-700 font-bold text-sm">
+                                    SJ
+                                </div>
+<div>
+<h3 class="font-label font-bold text-sm text-slate-800">Sarah Jenkins</h3>
+<p class="text-xs text-slate-500">1h ago</p>
+</div>
+</div>
+<span class="bg-amber-100 text-amber-700 px-2 py-0.5 rounded text-[10px] font-label font-bold uppercase tracking-wider border border-amber-200">Pending</span>
+</div>
+<h4 class="font-body font-semibold text-sm text-slate-800 mb-2">All-Hands Prep</h4>
+<p class="text-xs text-slate-600 line-clamp-2 mb-4">Draft agenda is ready. Need your opening remarks outlined.</p>
+<button class="w-full bg-white/50 text-slate-600 border border-slate-200 rounded py-2 text-xs font-label font-bold flex items-center justify-center gap-2 hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                            View Thread
+                        </button>
+</div>
+</div>
+<!-- Middle Column: Editor -->
+<div class="lg:col-span-5 flex flex-col gap-4">
+<h2 class="font-headline font-bold text-xl text-slate-800 flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-blue-500" style="font-variation-settings: 'FILL' 1;">robot_2</span>
+                        Editable AI Drafts
+                    </h2>
+<div class="glass-card rounded-xl border border-blue-200/50 flex flex-col shadow-lg overflow-hidden h-[600px]">
+<!-- Header Context -->
+<div class="p-4 border-b border-slate-200/60 bg-white/40 flex justify-between items-center backdrop-blur-sm">
+<div>
+<p class="text-xs text-slate-500 font-label mb-1">Replying to: Alex Chen</p>
+<h3 class="font-body text-sm text-slate-800 font-semibold">Re: Q3 Board Deck - Final Review</h3>
+</div>
+<div class="flex gap-2">
+<button class="p-1.5 rounded text-slate-500 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+<span class="material-symbols-outlined text-sm">history</span>
+</button>
+<button class="p-1.5 rounded text-slate-500 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Editor Area -->
+<div class="p-4 flex-1 flex flex-col overflow-y-auto">
+<div class="text-sm font-body text-slate-700 bg-white/60 p-4 rounded-lg border border-slate-200/60 mb-4 h-full shadow-inner shadow-slate-100">
+                                Hi Alex,<br/><br/>Thanks for sending this over. I've reviewed slides 12-15.<br/><br/>The data looks solid, but we need to strengthen the narrative around the customer acquisition cost (CAC) spike in August. Please add a bullet point explaining the intentional marketing spend test we ran during that period.<br/><br/>Otherwise, approved to proceed.<br/><br/>Best,
+                            </div>
+<!-- Prompt Input -->
+<div class="relative mt-auto">
+<input class="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-800 focus:ring-1 focus:ring-blue-400 focus:border-blue-400 transition-all font-body shadow-sm" placeholder="Instruct AI to tweak this draft..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-md text-blue-600 hover:bg-blue-50 transition-colors">
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+</div>
+<!-- Actions -->
+<div class="p-4 border-t border-slate-200/60 bg-white/40 flex justify-end gap-3 backdrop-blur-sm">
+<button class="px-4 py-2 rounded-lg text-sm font-label font-bold text-slate-600 hover:bg-slate-100 transition-colors border border-slate-300 bg-white">
+                                Reject
+                            </button>
+<button class="px-4 py-2 rounded-lg text-sm font-label font-bold text-blue-600 hover:bg-blue-50 transition-colors border border-blue-200 bg-white flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">refresh</span>
+                                Regenerate
+                            </button>
+<button class="px-6 py-2 rounded-lg text-sm font-label font-bold gradient-btn text-white shadow-md shadow-blue-500/20">
+                                Approve &amp; Send
+                            </button>
+</div>
+</div>
+</div>
+<!-- Right Column: Context Widgets -->
+<div class="lg:col-span-3 flex flex-col gap-6">
+<!-- Today's Agenda -->
+<div>
+<h2 class="font-headline font-bold text-xs text-slate-500 uppercase tracking-wider mb-3 font-label">Today's Agenda</h2>
+<div class="glass-card rounded-xl p-4 flex flex-col gap-4">
+<div class="flex gap-3 items-start relative pl-4 border-l-2 border-blue-400">
+<div class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-blue-500 ring-2 ring-white"></div>
+<div>
+<p class="text-xs text-slate-500 font-label mb-0.5">10:00 AM</p>
+<h4 class="text-sm font-body font-semibold text-slate-800">Exec Team Standup</h4>
+</div>
+</div>
+<div class="flex gap-3 items-start relative pl-4 border-l-2 border-slate-200">
+<div class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-slate-300 ring-2 ring-white"></div>
+<div>
+<p class="text-xs text-slate-500 font-label mb-0.5">1:30 PM</p>
+<h4 class="text-sm font-body font-semibold text-slate-700">Vendor Review: Apex</h4>
+</div>
+</div>
+<div class="flex gap-3 items-start relative pl-4 border-l-2 border-rose-400">
+<div class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white"></div>
+<div>
+<p class="text-xs text-slate-500 font-label mb-0.5">3:00 PM</p>
+<h4 class="text-sm font-body font-semibold text-slate-800">Q3 Board Prep</h4>
+<p class="text-[10px] text-rose-600 mt-1 font-medium">Requires review action</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Upcoming Meetings & Booking -->
+<div>
+<h2 class="font-headline font-bold text-xs text-slate-500 uppercase tracking-wider mb-3 font-label flex items-center justify-between">
+                            Smart Booking
+                            <span class="material-symbols-outlined text-sm">calendar_month</span>
+</h2>
+<div class="glass-card rounded-xl p-4">
+<p class="text-xs text-slate-600 mb-4 leading-relaxed font-body">AI has detected 2 scheduling requests in your inbox. Would you like to auto-book them based on your preferences?</p>
+<div class="flex flex-col gap-2">
+<button class="w-full bg-white/70 text-slate-700 border border-slate-200 rounded-lg py-2.5 px-3 text-xs font-label flex items-center justify-between hover:border-blue-300 hover:bg-white transition-all shadow-sm group">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-blue-500">schedule</span>
+<span class="font-medium">Sync with Marketing (30m)</span>
+</div>
+<span class="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity font-bold">Book</span>
+</button>
+<button class="w-full bg-white/70 text-slate-700 border border-slate-200 rounded-lg py-2.5 px-3 text-xs font-label flex items-center justify-between hover:border-blue-300 hover:bg-white transition-all shadow-sm group">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-blue-500">schedule</span>
+<span class="font-medium">Candidate Interview (1h)</span>
+</div>
+<span class="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity font-bold">Book</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- END: Main Content Area -->
+</div>
+<!-- END: Main Layout -->
+</body></html>

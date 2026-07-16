@@ -1,0 +1,17 @@
+[
+  {
+    "subject": "Re: Q3 roadmap finalization",
+    "to": "design-team@company.com",
+    "body": "Thanks for pulling this together — looks solid overall.\n\nA few quick thoughts:\n1. Let's push the onboarding revamp to Sprint 8 — we need the API work done first\n2. The metrics dashboard is a great add, but can we scope it to just the top 5 KPIs for v1?\n3. I'll loop in Priya from analytics to gut-check the data requirements\n\nLet's sync Thursday morning to lock this in.\n\nBest, Rahul"
+  },
+  {
+    "subject": "Re: Quick question on launch timeline",
+    "to": "eng-lead@company.com",
+    "body": "Got it — thanks for the heads-up on the delay.\n\nThat's fine, we can shift the beta to the 20th. I'll flag this to stakeholders so no one is caught off guard.\n\nCan you send me the updated timeline by EOD tomorrow?\n\nBest, Rahul"
+  },
+  {
+    "subject": "Re: Customer feedback summary",
+    "to": "cx-team@company.com",
+    "body": "This is really helpful — appreciate the detailed breakdown.\n\nTwo things I want to make sure we action on:\n1. The search latency complaints — I'll create a ticket for eng to investigate\n2. The onboarding confusion — let's add this to the UX audit backlog\n\nNice work compiling this. Let's review it in the product sync next week.\n\nBest, Rahul"
+  }
+]

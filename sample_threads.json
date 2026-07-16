@@ -1,0 +1,57 @@
+[
+  {
+    "id": "thread_1",
+    "subject": "[CRITICAL] Production API Outage - Auth Services",
+    "messages": [
+      {
+        "from": "Alex Chen <alex.c@company.com>",
+        "date": "Tue, 23 Jun 2026 10:15",
+        "body": "Hi Rahul,\n\nOur production Auth API is currently throwing 500 errors for about 12% of requests. We've traced it back to a DB connection pool leak introduced in the patch this morning.\n\nWe need to rollback auth-service-v3.1.2 immediately to stabilize. Can you approve the emergency release rollback in our pipeline?\n\nThanks,\nAlex"
+      }
+    ]
+  },
+  {
+    "id": "thread_2",
+    "subject": "Re: Q3 Roadmap Finalization & Board Prep",
+    "messages": [
+      {
+        "from": "Divya Rao <divya.r@company.com>",
+        "date": "Tue, 23 Jun 2026 11:30",
+        "body": "Hi Rahul,\n\nI need your team's final slides for the Q3 product roadmap by tomorrow afternoon. The board prep meeting is on Friday morning, and I need to compile the decks.\n\nParticularly, please confirm the timeline for the Stripe webhook refactoring. Is the end of Sprint 8 still our target date?\n\nBest,\nDivya"
+      }
+    ]
+  },
+  {
+    "id": "thread_3",
+    "subject": "Weekly Team Standup Notes - Jun 22, 2026",
+    "messages": [
+      {
+        "from": "Product Ops <ops@company.com>",
+        "date": "Mon, 22 Jun 2026 09:00",
+        "body": "Hi Team,\n\nHere is the summary of updates and blockers from yesterday's weekly team standup:\n\n1. Design: Wireframes for onboarding flow completed. Reviewing tomorrow.\n2. Engineering: Webhook retry logic fix is in review. QA validating edge cases.\n3. CX: Latency ticket created. Investigating DB query plan optimizations.\n\nHave a great week!\nProduct Ops Team"
+      }
+    ]
+  },
+  {
+    "id": "thread_4",
+    "subject": "[URGENT] AWS Enterprise Agreement Renewal",
+    "messages": [
+      {
+        "from": "Sarah Jenkins <sarah.j@company.com>",
+        "date": "Tue, 23 Jun 2026 08:45",
+        "body": "Hi Rahul,\n\nOur AWS Enterprise Discount Program (EDP) agreement expires on June 30. I've negotiated the new terms with our account manager (18% discount with a $150k annual commitment).\n\nI need your formal sign-off on the usage projections before I can submit the contract to legal for execution. Can you review and approve by EOD?\n\nBest,\nSarah"
+      }
+    ]
+  },
+  {
+    "id": "thread_5",
+    "subject": "AI Feature Integration Review Meeting",
+    "messages": [
+      {
+        "from": "Marcus Vance <marcus@company.com>",
+        "date": "Tue, 23 Jun 2026 13:10",
+        "body": "Hey Rahul,\n\nI'd like to schedule a 30-minute sync to review the UI mocks for the new AI ghostwriting and draft approval feature. I want to ensure the state management flow (Approve/Edit/Reject) meets PM expectations.\n\nAre you free on Thursday at 2:00 PM or Friday at 11:00 AM?\n\nThanks,\nMarcus"
+      }
+    ]
+  }
+]

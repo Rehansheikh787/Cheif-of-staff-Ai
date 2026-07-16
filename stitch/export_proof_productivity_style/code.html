@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Chief of Staff - Export Proof</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="custom-utilities">
+    body {
+        font-family: 'Sora', sans-serif;
+    }
+    
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gradient-btn {
+      background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    
+    .gradient-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* SVG Icon styles */
+    .icon-base {
+      width: 1.25rem;
+      height: 1.25rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Custom scrollbar for inner areas */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgba(241, 245, 249, 0.5);
+        border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(203, 213, 225, 0.8);
+        border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(148, 163, 184, 1);
+    }
+  </style>
+</head>
+<body class="h-screen w-screen overflow-hidden text-slate-800 antialiased bg-cover bg-center bg-no-repeat" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLtNmwsqxn_gtXuaMpB7w0TeOWQ5WqM1-fwkUVoovR33XD9UTXvAYq6rxrPrVzkRnctFB8H0twaLyx2b0iCKmbzD1OEmfEb8P9NY_AiNTnJyLAVpjk2gqVtqgzvwT1LB7Xm2DSNtgkZG6XWm3E59AozKDMzmzH_cJ0o2pWTFxZ9q9gHG9YHefceWX-dBn0ghU-3glcylkZGdabDh-MtCOP1dDAuJv2i88YZOiB_NGOiqLYnl8NTOmhrZu8p9');">
+<!-- BEGIN: Main Layout -->
+<div class="flex h-full w-full">
+<!-- BEGIN: Sidebar -->
+<aside class="glass-panel w-72 h-full flex flex-col border-r border-white/40 shadow-xl z-30 flex-shrink-0">
+<!-- Header / Logo -->
+<div class="p-6 flex items-center gap-3">
+<svg class="w-8 h-8 text-slate-700" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+<path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5.7"></path>
+<circle cx="12" cy="12" r="3"></circle>
+<path d="m19.07 4.93-2.83 2.83M4.93 19.07l2.83-2.83M2 12h4M18 12h4M12 2v4M12 18v4M4.93 4.93l2.83 2.83M19.07 19.07l-2.83-2.83"></path>
+</svg>
+<div class="flex flex-col">
+<h1 class="text-lg font-bold tracking-tight text-slate-800 leading-none">Chief of Staff AI</h1>
+<span class="text-[10px] text-slate-500 font-medium uppercase tracking-wider mt-1">Executive Workspace</span>
+</div>
+</div>
+<!-- Action Button -->
+<div class="px-6 pb-4 border-b border-slate-200/50">
+<button class="w-full flex items-center justify-center gap-2 bg-white/80 hover:bg-white border border-slate-200 text-slate-700 font-medium py-2 px-4 rounded-lg shadow-sm transition-colors duration-200 backdrop-blur-md">
+<svg class="icon-base text-slate-600" viewbox="0 0 24 24">
+<line x1="12" x2="12" y1="5" y2="19"></line>
+<line x1="5" x2="19" y1="12" y2="12"></line>
+</svg>
+          New Triage Flow
+        </button>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<div class="px-6 py-2 mt-2">
+<a class="flex items-center gap-3 text-slate-600 font-medium py-2 hover:text-slate-900 transition-colors" href="#">
+<svg class="icon-base" viewbox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5Z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+<span>Chief of Staff Flow</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 font-medium py-2 hover:text-slate-900 transition-colors" href="#">
+<svg class="icon-base" viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+<span>App Settings</span>
+</a>
+</div>
+<div class="px-6 py-4">
+<h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Workflow</h3>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium" href="#">
+<svg class="icon-base text-blue-500" viewbox="0 0 24 24"><rect height="16" rx="2" ry="2" width="18" x="3" y="4"></rect><path d="M3 10h18"></path><path d="M12 16v-6"></path><path d="M8 12h8"></path></svg>
+            Inbox &amp; Triage
+          </a>
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium" href="#">
+<svg class="icon-base text-emerald-500" viewbox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            Draft Generation
+          </a>
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium" href="#">
+<svg class="icon-base text-amber-500" viewbox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5c-1.1 0-2 .9-2 2v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+            Approval Gate
+          </a>
+<a class="flex items-center gap-3 px-2 py-2 text-slate-800 bg-slate-100/60 rounded-md transition-colors font-semibold border-l-2 border-rose-500" href="#">
+<svg class="icon-base text-rose-500" viewbox="0 0 24 24"><path d="M10 3H6a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4M16 17l5-5-5-5M19.8 12H9"></path></svg>
+            Export Proof
+          </a>
+</nav>
+</div>
+<div class="px-6 py-4">
+<h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Data Source</h3>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium" href="#">
+<svg class="icon-base text-sky-500" viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            Sample
+          </a>
+<a class="flex items-center gap-3 px-2 py-2 text-slate-600 hover:bg-slate-100/50 rounded-md transition-colors font-medium" href="#">
+<svg class="icon-base" viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" fill="#4285F4"></path><path d="M20 4v10l-8-5-8 5V4c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2z" fill="#34A853"></path><path d="M12 14l8 5H4z" fill="#FBBC05"></path><path d="M20 19v-5l-8 5-8-5v5h16z" fill="#EA4335"></path></svg>
+            Gmail
+          </a>
+</nav>
+</div>
+</div>
+<!-- User Profile -->
+<div class="p-4 border-t border-slate-200/50 flex items-center gap-3 bg-white/40">
+<div class="w-8 h-8 rounded-full bg-slate-200 border border-white overflow-hidden shrink-0 shadow-sm">
+<img alt="User avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9SFmtcy_nIfrT3Nwz46gDKAgX6pFEPHwodfQdb0W3H6qDQ6XflU9cm5WgmUmZQvPXug2vblasq2_AgKadZFo36q9FHfv7MbneAJFHBxOSmbsF4zyoMtdhPz5F4_Livb5O6-eSOW8ae63vYFeV01fW2ucsvwtEpliBJCHxpecUOpgAY9494Q0EcgndWqxSJUDmFhmtzxmVvDgM2UqJ62egvfH0vULGKNXuKZsrVSMee8b3ilpH1_JNCA"/>
+</div>
+<div class="flex flex-col truncate">
+<span class="text-sm font-semibold text-slate-800">Executive User</span>
+<span class="text-[10px] text-emerald-600 font-medium">Connected</span>
+</div>
+</div>
+</aside>
+<!-- END: Sidebar -->
+<!-- BEGIN: Main Content Area -->
+<div class="flex-1 flex flex-col relative z-0 h-full overflow-hidden">
+<!-- Top Navbar -->
+<header class="glass-panel h-16 flex items-center justify-between px-8 border-b border-white/40 z-20 flex-shrink-0">
+<div class="flex items-center gap-8">
+<h2 class="text-xl font-semibold text-slate-800">Workspace</h2>
+<nav class="hidden md:flex gap-6 h-full items-center">
+<a class="text-slate-500 hover:text-slate-800 transition-colors duration-200 text-sm font-medium" href="#">Dashboard</a>
+<a class="text-slate-500 hover:text-slate-800 transition-colors duration-200 text-sm font-medium" href="#">Analytics</a>
+<a class="text-slate-500 hover:text-slate-800 transition-colors duration-200 text-sm font-medium" href="#">Team</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<svg class="icon-base absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<input class="bg-white/60 border border-slate-200 text-sm text-slate-800 rounded-full pl-9 pr-4 py-1.5 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:outline-none w-48 transition-all focus:w-64 backdrop-blur-sm" placeholder="Search..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full hover:bg-slate-100/50 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors">
+<svg class="icon-base w-5 h-5" viewbox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+</button>
+<button class="w-8 h-8 rounded-full hover:bg-slate-100/50 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors">
+<svg class="icon-base w-5 h-5" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+</button>
+</div>
+</div>
+</header>
+<!-- Scrollable Content -->
+<main class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+<div class="max-w-6xl mx-auto flex flex-col gap-8">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-3xl font-extrabold text-slate-800 tracking-tight mb-2 flex items-center gap-3">
+<svg class="w-8 h-8 text-rose-500" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    Export Proof
+                </h1>
+<p class="text-slate-600 text-sm max-w-2xl leading-relaxed">Review approved drafts and execution logs before final export. This data represents the finalized state of the current triage session.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-white/80 border border-slate-200 text-slate-700 px-4 py-2 rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-white transition-colors shadow-sm backdrop-blur-sm">
+<svg class="icon-base w-4 h-4 text-slate-500" viewbox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
+                    Download Proof (Markdown)
+                </button>
+<button class="bg-white/80 border border-emerald-200 text-emerald-700 px-4 py-2 rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-emerald-50 transition-colors shadow-sm backdrop-blur-sm">
+<svg class="icon-base w-4 h-4 text-emerald-500" viewbox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    Download Proof (HTML)
+                </button>
+</div>
+</header>
+<!-- Main Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Draft Preview (Bento Style) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<div class="glass-panel rounded-2xl p-6 flex flex-col gap-6">
+<div class="flex items-center justify-between border-b border-slate-200/50 pb-4">
+<h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+<svg class="icon-base text-emerald-500" viewbox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                            Preview of Approved Drafts
+                        </h2>
+<span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-700 text-xs font-semibold uppercase tracking-wider border border-emerald-200/50 shadow-sm">Final State</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<!-- Original Thread -->
+<div class="glass-card rounded-xl p-5 flex flex-col gap-4">
+<div class="flex items-center gap-2 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+<svg class="icon-base w-4 h-4" viewbox="0 0 24 24"><path d="M3 3v5h5"></path><path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"></path><polyline points="12 7 12 12 15 15"></polyline></svg>
+                                Original Thread History
+                            </div>
+<div class="flex flex-col gap-4 max-h-[350px] overflow-y-auto pr-2 custom-scrollbar">
+<div class="bg-white/80 p-4 rounded-lg border border-slate-100 shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="font-bold text-sm text-slate-800">Sarah Jenkins</span>
+<span class="text-xs text-slate-400 font-medium">10:42 AM</span>
+</div>
+<p class="text-sm text-slate-600 leading-relaxed">Hi team, checking in on the Q3 strategic alignment deck. I need a quick sync to finalize the budget slides before Friday. Let me know when works.</p>
+</div>
+<div class="bg-blue-50/50 p-4 rounded-lg border border-blue-100/50 ml-4 shadow-sm backdrop-blur-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="font-bold text-sm text-blue-600">AI Context</span>
+<span class="text-[10px] text-blue-400 font-semibold uppercase tracking-wider border border-blue-200 rounded px-1.5 py-0.5">System</span>
+</div>
+<p class="text-xs text-slate-600 leading-relaxed pl-3 border-l-2 border-blue-300">Detected intent: Meeting request. Urgency: High (Due Friday). Recommended action: Propose 30m sync Thursday afternoon.</p>
+</div>
+</div>
+</div>
+<!-- Approved Reply -->
+<div class="glass-card rounded-xl p-1 bg-gradient-to-br from-rose-100 to-indigo-100 shadow-sm">
+<div class="bg-white/90 backdrop-blur-md rounded-lg p-4 h-full flex flex-col gap-4">
+<div class="flex items-center justify-between text-xs font-semibold uppercase tracking-wider pb-2 border-b border-slate-100">
+<div class="flex items-center gap-2 text-rose-600">
+<svg class="icon-base w-4 h-4" viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                        Approved Draft Reply
+                                    </div>
+<svg class="icon-base w-4 h-4 text-emerald-500" viewbox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+</div>
+<div class="flex-1 flex flex-col text-sm text-slate-700 leading-relaxed">
+<div class="pb-3 mb-3 flex flex-col gap-1.5 text-xs border-b border-slate-100">
+<div class="flex"><span class="w-14 text-slate-400 font-medium">To:</span> <span class="font-medium text-slate-800">Sarah Jenkins</span></div>
+<div class="flex"><span class="w-14 text-slate-400 font-medium">Subject:</span> <span class="font-medium text-slate-800">Re: Q3 Strategic Alignment - Sync</span></div>
+</div>
+<p class="mb-4">Hi Sarah,</p>
+<p class="mb-4">Thanks for reaching out. I've reviewed the current state of the budget slides. I'm available for a 30-minute sync tomorrow (Thursday) at either 1:00 PM or 3:30 PM EST.</p>
+<p class="mb-4">I'll go ahead and send a placeholder invite for 1:00 PM; feel free to propose a new time if the latter works better.</p>
+<p>Best,<br/><span class="text-slate-500 italic">[Executive Name]</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Meta Data & Stats -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Status Card -->
+<div class="glass-panel rounded-2xl p-6">
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Session Metrics</h3>
+<div class="flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center border border-blue-100 text-blue-500 shadow-sm">
+<svg class="icon-base" viewbox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+</div>
+<span class="text-sm font-medium text-slate-700">Processed Threads</span>
+</div>
+<span class="text-2xl font-extrabold text-slate-800">14</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center border border-emerald-100 text-emerald-500 shadow-sm">
+<svg class="icon-base" viewbox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+</div>
+<span class="text-sm font-medium text-slate-700">Auto-Approvals</span>
+</div>
+<span class="text-2xl font-extrabold text-slate-800">12</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center border border-amber-100 text-amber-500 shadow-sm">
+<svg class="icon-base" viewbox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+</div>
+<span class="text-sm font-medium text-slate-700">Manual Edits</span>
+</div>
+<span class="text-2xl font-extrabold text-slate-800">2</span>
+</div>
+</div>
+</div>
+<!-- Export Settings Mini-form -->
+<div class="glass-panel rounded-2xl p-6">
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-5 flex items-center gap-2">
+<svg class="icon-base w-4 h-4" viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        Export Configuration
+                    </h3>
+<div class="flex flex-col gap-4">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="form-checkbox text-blue-500 border-slate-300 rounded focus:ring-blue-500/50 w-5 h-5 transition-all bg-white" type="checkbox"/>
+<span class="text-sm font-medium text-slate-700 group-hover:text-slate-900 transition-colors">Include Metadata Tags</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="form-checkbox text-blue-500 border-slate-300 rounded focus:ring-blue-500/50 w-5 h-5 transition-all bg-white" type="checkbox"/>
+<span class="text-sm font-medium text-slate-700 group-hover:text-slate-900 transition-colors">Append Action Logs</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox text-blue-500 border-slate-300 rounded focus:ring-blue-500/50 w-5 h-5 transition-all bg-white" type="checkbox"/>
+<span class="text-sm font-medium text-slate-700 group-hover:text-slate-900 transition-colors">Anonymize Entities (Preview)</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Bottom Full Width: Action Log -->
+<div class="lg:col-span-12">
+<div class="glass-panel rounded-2xl p-6">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+<svg class="icon-base text-blue-500" viewbox="0 0 24 24"><line x1="8" x2="21" y1="6" y2="6"></line><line x1="8" x2="21" y1="12" y2="12"></line><line x1="8" x2="21" y1="18" y2="18"></line><line x1="3" x2="3.01" y1="6" y2="6"></line><line x1="3" x2="3.01" y1="12" y2="12"></line><line x1="3" x2="3.01" y1="18" y2="18"></line></svg>
+                            Action Log
+                        </h2>
+<button class="text-xs font-semibold text-slate-500 hover:text-slate-800 flex items-center gap-1 transition-colors bg-white/50 px-3 py-1.5 rounded-md border border-slate-200">
+<svg class="icon-base w-3.5 h-3.5" viewbox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                            Filter
+                        </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-slate-200 text-xs font-bold text-slate-400 uppercase tracking-wider">
+<th class="py-3 px-4 font-semibold">Timestamp</th>
+<th class="py-3 px-4 font-semibold">Action Type</th>
+<th class="py-3 px-4 font-semibold">Target Entity</th>
+<th class="py-3 px-4 font-semibold">Status</th>
+<th class="py-3 px-4 font-semibold text-right">Details</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<tr class="border-b border-slate-100 hover:bg-white/40 transition-colors group">
+<td class="py-3 px-4 text-slate-500 font-medium">10:45:12 AM</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500 shadow-sm"></span>
+<span class="font-bold text-slate-800">BOOKED</span> <span class="text-slate-600">Meeting Request</span>
+</div>
+</td>
+<td class="py-3 px-4 text-slate-700 font-medium">Sarah Jenkins</td>
+<td class="py-3 px-4">
+<span class="px-2 py-1 rounded bg-emerald-100 text-emerald-700 text-[10px] font-bold border border-emerald-200">SUCCESS</span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="text-slate-400 group-hover:text-blue-500 transition-colors">
+<svg class="icon-base w-4 h-4" viewbox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" x2="21" y1="14" y2="3"></line></svg>
+</button>
+</td>
+</tr>
+<tr class="border-b border-slate-100 hover:bg-white/40 transition-colors group">
+<td class="py-3 px-4 text-slate-500 font-medium">10:42:05 AM</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-rose-500 shadow-sm"></span>
+<span class="font-bold text-slate-800">SENT</span> <span class="text-slate-600">Draft Reply</span>
+</div>
+</td>
+<td class="py-3 px-4 text-slate-700 font-medium">Sarah Jenkins</td>
+<td class="py-3 px-4">
+<span class="px-2 py-1 rounded bg-emerald-100 text-emerald-700 text-[10px] font-bold border border-emerald-200">SUCCESS</span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="text-slate-400 group-hover:text-blue-500 transition-colors">
+<svg class="icon-base w-4 h-4" viewbox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" x2="21" y1="14" y2="3"></line></svg>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-white/40 transition-colors group">
+<td class="py-3 px-4 text-slate-500 font-medium">10:38:22 AM</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-amber-500 shadow-sm"></span>
+<span class="font-bold text-slate-800">FLAGGED</span> <span class="text-slate-600">Vendor Invoice</span>
+</div>
+</td>
+<td class="py-3 px-4 text-slate-700 font-medium">Acme Corp Billing</td>
+<td class="py-3 px-4">
+<span class="px-2 py-1 rounded bg-amber-100 text-amber-700 text-[10px] font-bold border border-amber-200">PENDING REVIEW</span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="text-slate-400 group-hover:text-blue-500 transition-colors">
+<svg class="icon-base w-4 h-4" viewbox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" x2="21" y1="14" y2="3"></line></svg>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div></main>
+</div>
+<!-- END: Main Content Area -->
+</div>
+<!-- END: Main Layout -->
+</body></html>

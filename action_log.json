@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": "2026-06-28T11:14:19.291408+00:00",
+    "action_type": "booked",
+    "thread_subject": "Meeting Request",
+    "detail": "Discuss the latest updates and next steps for our SAS project",
+    "id": "gnl3nfa6lcg7r11mc4oe6i5lu8"
+  },
+  {
+    "timestamp": "2026-06-28T11:14:43.276590+00:00",
+    "action_type": "sent",
+    "thread_subject": "Meeting Request",
+    "detail": "sheikhrehan861@gmail.com",
+    "id": "19f0df0567113b80"
+  },
+  {
+    "timestamp": "2026-07-06T16:15:42.249883+00:00",
+    "action_type": "booked",
+    "thread_subject": "AI Feature Integration Review Meeting",
+    "detail": "AI Feature Integration Review Meeting",
+    "id": "mock_event_auto_1783354542.249883"
+  },
+  {
+    "timestamp": "2026-07-14T11:49:34.525759+00:00",
+    "action_type": "sent",
+    "thread_subject": "Urgent meeting",
+    "detail": "sheikhrehan861@gmail.com",
+    "id": "19f6075fc0ad6317"
+  },
+  {
+    "timestamp": "2026-07-14T11:50:32.284148+00:00",
+    "action_type": "booked",
+    "thread_subject": "Urgent meeting",
+    "detail": "Urgent meeting",
+    "id": "p6jldd7as67829dn4h5p2l9gqg"
+  },
+  {
+    "timestamp": "2026-07-16T12:09:03.633284+00:00",
+    "action_type": "booked",
+    "thread_subject": "AI Feature Integration Review Meeting",
+    "detail": "AI Feature Integration Review Meeting",
+    "id": "mock_event_auto_1784203743.633284"
+  }
+]

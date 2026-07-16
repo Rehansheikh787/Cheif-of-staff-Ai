@@ -3,6 +3,7 @@ import re
 import json
 import time
 import logging
+import requests
 from google import genai
 from google.genai import types
 from pydantic import BaseModel, Field
@@ -16,7 +17,17 @@ triage_dir = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(triage_dir, ".env"))
 load_dotenv(os.path.join(os.path.dirname(triage_dir), ".env"))
 load_dotenv()
-client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+
+_client = None
+
+def _get_client():
+    global _client
+    if _client is None:
+        api_key = os.environ.get("GEMINI_API_KEY")
+        if not api_key:
+            raise ValueError("GEMINI_API_KEY is not set in environment or .env file.")
+        _client = genai.Client(api_key=api_key)
+    return _client
 
 # ---------------------------------------------------------------------------
 # Rate-limit configuration (Gemini free tier: 5 requests/minute)
@@ -32,7 +43,7 @@ class TriageResult(BaseModel):
     reason: str = Field(description="One sentence explaining why")
 
 def triage_thread(sender: str, subject: str, snippet: str) -> dict:
-    """Sends email metadata to Gemini to categorize and assess its priority."""
+    """Sends email metadata to Gemini to categorize and assess its priority. Falls back to Groq if Gemini fails."""
     prompt = f""" 
 You are an intelligent email assistant helping triage an inbox. 
 
@@ -44,7 +55,7 @@ Preview: {snippet}
 """
     try:
         # Generate completion via Gemini-2.5-Flash with guaranteed JSON schema
-        response = client.models.generate_content(
+        response = _get_client().models.generate_content(
             model='gemini-2.5-flash',
             contents=prompt,
             config=types.GenerateContentConfig(
@@ -56,14 +67,57 @@ Preview: {snippet}
         return json.loads(response.text)
     except Exception as e:
         logging.error(f"Error during triage call for {sender}: {e}")
+        
+        # Groq Fallback
+        groq_api_key = os.environ.get("GROQ_API_KEY")
+        if groq_api_key:
+            logging.info("Attempting Groq fallback for email triage...")
+            groq_model = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
+            headers = {
+                "Authorization": f"Bearer {groq_api_key}",
+                "Content-Type": "application/json"
+            }
+            system_instruction = (
+                "You are an intelligent email assistant helping triage an inbox.\n"
+                "Classify the given email thread metadata.\n"
+                "You must respond ONLY with a JSON object matching this schema:\n"
+                "{\n"
+                '  "priority": "urgent" | "needs-reply" | "fyi" | "ignore",\n'
+                '  "category": "meeting-request" | "follow-up" | "newsletter" | "billing" | "job-app" | "social" | "admin" | "other",\n'
+                '  "reason": "One sentence explaining why"\n'
+                "}"
+            )
+            payload = {
+                "model": groq_model,
+                "messages": [
+                    {"role": "system", "content": system_instruction},
+                    {"role": "user", "content": f"Sender: {sender}\nSubject: {subject}\nPreview: {snippet}"}
+                ],
+                "response_format": {"type": "json_object"},
+                "temperature": 0.1
+            }
+            try:
+                resp = requests.post(
+                    "https://api.groq.com/openai/v1/chat/completions",
+                    headers=headers,
+                    json=payload,
+                    timeout=10
+                )
+                resp.raise_for_status()
+                result_json = resp.json()
+                content = result_json["choices"][0]["message"]["content"]
+                return json.loads(content)
+            except Exception as groq_err:
+                logging.error(f"Groq fallback failed during triage: {groq_err}")
+                
         return _local_fallback_classify(sender, subject, snippet, e)
 
 
 def _local_fallback_classify(sender: str, subject: str, snippet: str, error: Exception) -> dict:
     """Rule-based fallback classifier for sandbox/offline scenarios."""
-    sender_lower = sender.lower()
-    subject_lower = subject.lower()
-    snippet_lower = snippet.lower()
+    sender_lower = (sender or "").lower()
+    subject_lower = (subject or "").lower()
+    snippet_lower = (snippet or "").lower()
 
     def has_word(word, *texts):
         # Matches word as a whole or as part of email address domain/user
@@ -102,13 +156,15 @@ def triage_inbox(threads: list) -> list:
     """Triages a batch list of email threads and sorts them by priority hierarchy.
     
     Includes rate-limit awareness: pauses every RATE_LIMIT_BATCH_SIZE requests
-    to stay within the Gemini free tier quota (5 req/min).
+    to stay within the Gemini free tier quota (5 req/min). Can be bypassed by setting
+    DISABLE_RATE_LIMIT_PAUSE=true in environment or .env.
     """
     triaged = []
+    disable_pause = os.environ.get("DISABLE_RATE_LIMIT_PAUSE", "false").lower() in ("true", "1", "yes")
 
     for i, thread in enumerate(threads):
         # Rate-limit: pause after every batch to avoid 429 errors
-        if i > 0 and i % RATE_LIMIT_BATCH_SIZE == 0:
+        if not disable_pause and i > 0 and i % RATE_LIMIT_BATCH_SIZE == 0:
             logging.info(
                 f"Rate limit pause: processed {i}/{len(threads)} threads. "
                 f"Waiting {RATE_LIMIT_PAUSE_SECS}s for quota reset..."

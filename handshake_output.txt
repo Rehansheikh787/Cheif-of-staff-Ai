@@ -1,0 +1,8 @@
+SENT REQUEST:
+{"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {"protocolVersion": "2024-11-05", "capabilities": {}, "clientInfo": {"name": "engine.py", "version": "1.0.0"}}}
+
+RECEIVED LINE:
+'{"result":{"protocolVersion":"2024-11-05","capabilities":{"tools":{}},"serverInfo":{"name":"gmail","version":"1.0.0","capabilities":{"tools":{}}}},"jsonrpc":"2.0","id":1}\n'
+
+STDERR OUTPUT:
+

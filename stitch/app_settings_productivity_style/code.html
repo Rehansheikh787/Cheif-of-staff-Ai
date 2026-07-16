@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>App Settings - AI Chief of Staff</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Sora', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.05);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-btn {
+            background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+            transition: opacity 0.2s ease;
+        }
+        
+        .gradient-btn:hover {
+            opacity: 0.9;
+        }
+
+        .mesh-bg {
+            background-color: rgba(255, 255, 255, 0.8);
+            background-image: 
+                radial-gradient(at 10% 10%, hsla(210,100%,90%,0.8) 0px, transparent 50%),
+                radial-gradient(at 90% 10%, hsla(160,100%,90%,0.8) 0px, transparent 50%),
+                radial-gradient(at 50% 90%, hsla(280,100%,90%,0.8) 0px, transparent 50%);
+        }
+
+        /* Custom Scrollbar for immersive feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.5);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(148, 163, 184, 0.8);
+        }
+
+        .icon-base {
+            width: 1.25rem;
+            height: 1.25rem;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "fontFamily": {
+                        "sans": ["Sora", "sans-serif"],
+                        "headline": ["Sora"],
+                        "display": ["Sora"],
+                        "body": ["Sora"],
+                        "label": ["Sora"]
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="relative min-h-screen flex text-slate-800 bg-cover bg-center bg-no-repeat font-sans antialiased selection:bg-blue-100 selection:text-blue-900" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLtNmwsqxn_gtXuaMpB7w0TeOWQ5WqM1-fwkUVoovR33XD9UTXvAYq6rxrPrVzkRnctFB8H0twaLyx2b0iCKmbzD1OEmfEb8P9NY_AiNTnJyLAVpjk2gqVtqgzvwT1LB7Xm2DSNtgkZG6XWm3E59AozKDMzmzH_cJ0o2pWTFxZ9q9gHG9YHefceWX-dBn0ghU-3glcylkZGdabDh-MtCOP1dDAuJv2i88YZOiB_NGOiqLYnl8NTOmhrZu8p9');">
+<!-- SideNavBar -->
+<aside class="glass-panel w-72 h-screen flex flex-col border-r border-white/40 shadow-xl z-40 flex-shrink-0 transition-all duration-300">
+<!-- Brand/Header -->
+<div class="p-6 border-b border-white/20 flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-white/50 relative group shadow-sm">
+<img alt="Executive User Portrait" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVI2yS-aqYGAy8fZPB9E8-idF-QQ4QBFtkjUfqnq-_BCsAUzD7Ms_ePck_4bvkwTEJFkSM47hB-Unj-B2DEIORCk9XMzdaj2ZgGJKrbks8g_hrxZ0edAceQFfYI1mBoUCzLHA_fnhoxduYnPwy5fj5OHPwG6zkcCqQKGz84v-mEqpDe4-BCtAekEylwBRfCtM-K8-Zon0uDP_-QsjORK5hQVCE1eXJ65pReu2BaYD5lyYJqrMMAJ5isQ"/>
+</div>
+<div>
+<h1 class="text-lg font-bold text-slate-800 tracking-tight leading-tight">AI Chief of Staff</h1>
+<p class="text-[10px] text-slate-500 mt-0.5 tracking-wider uppercase font-semibold">Executive Workspace</p>
+</div>
+</div>
+<button class="w-full mt-2 bg-white/80 hover:bg-white border border-slate-200 text-slate-700 font-medium py-2 px-4 rounded-lg shadow-sm transition-colors duration-200 backdrop-blur-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-blue-600 text-sm" style="font-variation-settings: 'FILL' 1;">add</span>
+<span class="tracking-wide text-sm font-semibold">New Triage Flow</span>
+</button>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto py-4 px-2 space-y-1">
+<h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 px-4">Workflow</h3>
+<a class="text-slate-600 hover:text-slate-900 px-4 py-2.5 flex items-center gap-3 transition-colors hover:bg-slate-100/50 rounded-md font-medium text-sm" href="#">
+<span class="material-symbols-outlined text-emerald-600 text-xl">dynamic_form</span>
+<span>Chief of Staff Flow</span>
+</a>
+<a class="bg-slate-100/60 text-slate-900 font-bold border-l-4 border-blue-500 px-3 py-2.5 flex items-center gap-3 rounded-r-md transition-colors text-sm relative" href="#">
+<span class="material-symbols-outlined text-amber-500 text-xl" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span>App Settings</span>
+</a>
+<a class="text-slate-600 hover:text-slate-900 px-4 py-2.5 flex items-center gap-3 transition-colors hover:bg-slate-100/50 rounded-md font-medium text-sm" href="#">
+<span class="material-symbols-outlined text-blue-500 text-xl">inbox</span>
+<span>Inbox &amp; Triage</span>
+</a>
+<a class="text-slate-600 hover:text-slate-900 px-4 py-2.5 flex items-center gap-3 transition-colors hover:bg-slate-100/50 rounded-md font-medium text-sm" href="#">
+<span class="material-symbols-outlined text-emerald-500 text-xl">edit_note</span>
+<span>Draft Generation</span>
+</a>
+<a class="text-slate-600 hover:text-slate-900 px-4 py-2.5 flex items-center gap-3 transition-colors hover:bg-slate-100/50 rounded-md font-medium text-sm" href="#">
+<span class="material-symbols-outlined text-amber-500 text-xl">verified_user</span>
+<span>Approval Gate</span>
+</a>
+<a class="text-slate-600 hover:text-slate-900 px-4 py-2.5 flex items-center gap-3 transition-colors hover:bg-slate-100/50 rounded-md font-medium text-sm" href="#">
+<span class="material-symbols-outlined text-rose-500 text-xl">file_export</span>
+<span>Export Proof</span>
+</a>
+<h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-6 mb-3 px-4">Data Source</h3>
+<a class="text-slate-600 hover:text-slate-900 px-4 py-2.5 flex items-center gap-3 transition-colors hover:bg-slate-100/50 rounded-md font-medium text-sm" href="#">
+<span class="material-symbols-outlined text-sky-500 text-xl">data_thresholding</span>
+<span>Sample</span>
+</a>
+<a class="text-slate-600 hover:text-slate-900 px-4 py-2.5 flex items-center gap-3 transition-colors hover:bg-slate-100/50 rounded-md font-medium text-sm" href="#">
+<span class="material-symbols-outlined text-red-500 text-xl">mail</span>
+<span>Gmail</span>
+</a>
+</div>
+<!-- Bottom User/Status area -->
+<div class="p-4 border-t border-white/20">
+<div class="flex items-center justify-between text-xs text-slate-500 font-medium">
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_4px_#10b981]"></span> System Online</span>
+<span class="opacity-70">v1.4.2</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 relative z-10 flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar -->
+<header class="glass-panel h-16 flex items-center justify-between px-8 border-b border-white/40 sticky top-0 z-30">
+<div class="flex items-center gap-6">
+<h2 class="text-xl font-semibold text-slate-800 tracking-tight uppercase">Workspace</h2>
+<nav class="hidden md:flex items-center gap-6 text-sm font-medium ml-4">
+<a class="text-slate-600 hover:text-blue-600 transition-colors duration-200" href="#">Dashboard</a>
+<a class="text-slate-600 hover:text-blue-600 transition-colors duration-200" href="#">Analytics</a>
+<a class="text-slate-600 hover:text-blue-600 transition-colors duration-200" href="#">Team</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<!-- Search -->
+<div class="relative hidden lg:block group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm z-10">search</span>
+<input class="bg-white/50 border border-white/60 rounded-md py-1.5 pl-9 pr-4 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/30 w-48 focus:w-64 transition-all duration-300 backdrop-blur-sm shadow-sm" placeholder="Search systems..." type="text"/>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 hover:text-blue-600 transition-colors duration-200 rounded-full hover:bg-white/60 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_4px_#3b82f6]"></span>
+</button>
+<button class="p-2 text-slate-500 hover:text-slate-800 transition-colors duration-200 rounded-full hover:bg-white/60">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto p-8 pb-24 relative">
+<!-- Page Header -->
+<div class="mb-10 max-w-5xl mx-auto glass-panel p-8 rounded-2xl">
+<h1 class="text-3xl font-extrabold text-slate-800 tracking-tight mb-2 gradient-text">Configuration</h1>
+<p class="text-slate-600 text-lg leading-relaxed">Manage authentication, system integrations, and global workspace parameters.</p>
+</div>
+<div class="max-w-5xl mx-auto grid grid-cols-1 xl:grid-cols-12 gap-8">
+<!-- Left Column (Profile & General) -->
+<div class="xl:col-span-4 flex flex-col gap-6">
+<!-- Profile Settings Card -->
+<section class="glass-card rounded-xl p-6 relative overflow-hidden group">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-amber-500 text-2xl">account_circle</span>
+<h3 class="text-lg font-bold text-slate-800">Profile Identity</h3>
+</div>
+<div class="flex flex-col gap-5">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg border-2 border-white shadow-sm overflow-hidden relative group/avatar cursor-pointer">
+<img alt="Current Avatar" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCpv525Dn-EYma9GehjzqjjFdV2Qekhu6tG_AYL4p_6i0s1uSfj5cqGbGS_BdfMdyT_pQJTc0Nu8G_VA1xNoj550TiK0LDfwXmauJ-BfGHYxsXssW4JhKpZPR4ZcHMcZ9a1Q_ozyZGMoz1KvM_8VB9Ym83clng2RzeBlAed_PrmLOXMdY4iPwJ_599_nDOjufMaJ9b1Qh70pRVotkHx0Rp9gL1nTG8UBHMgI7U7PUV4psnKyd6fhZLRw"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover/avatar:opacity-100 transition-opacity backdrop-blur-sm">
+<span class="material-symbols-outlined text-white text-sm">edit</span>
+</div>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-slate-800">Executive User</h4>
+<p class="text-xs text-slate-500 font-mono mt-0.5">ID: SYS-0924-X</p>
+</div>
+</div>
+<div class="space-y-4 mt-2">
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Display Name</label>
+<input class="bg-white/50 border border-white/60 rounded-md text-sm text-slate-800 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500/30 w-full shadow-sm" type="text" value="Executive User"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">System Role</label>
+<input class="bg-slate-100/50 border border-slate-200/60 rounded-md text-sm text-slate-500 py-2 px-3 focus:outline-none w-full cursor-not-allowed" disabled="" type="text" value="Chief of Staff (Admin)"/>
+</div>
+</div>
+<button class="mt-2 text-sm font-semibold text-slate-700 hover:text-blue-600 bg-white/80 hover:bg-white border border-slate-200 py-2 px-4 rounded-lg shadow-sm transition-all text-center w-full">
+                                Update Identity Params
+                            </button>
+</div>
+</section>
+<!-- Preferences Card -->
+<section class="glass-card rounded-xl p-6">
+<div class="flex items-center gap-3 mb-5">
+<span class="material-symbols-outlined text-slate-500 text-xl">tune</span>
+<h3 class="text-base font-bold text-slate-800">Interface Prefs</h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between group">
+<div>
+<h4 class="text-sm font-medium text-slate-700">Haptic Feedback</h4>
+<p class="text-xs text-slate-400 font-mono mt-0.5">tactile_response = true</p>
+</div>
+<div class="w-10 h-5 bg-blue-100 rounded-full relative cursor-pointer border border-blue-200 shadow-inner">
+<div class="absolute right-1 top-0.5 w-4 h-4 bg-blue-500 rounded-full shadow-sm"></div>
+</div>
+</div>
+<div class="h-px w-full bg-slate-200/50"></div>
+<div class="flex items-center justify-between group">
+<div>
+<h4 class="text-sm font-medium text-slate-700">Data Stream Visualizer</h4>
+<p class="text-xs text-slate-400 font-mono mt-0.5">bg_fx = false</p>
+</div>
+<div class="w-10 h-5 bg-slate-200 rounded-full relative cursor-pointer border border-slate-300 shadow-inner">
+<div class="absolute left-1 top-0.5 w-4 h-4 bg-white rounded-full shadow-sm"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column (Integrations & Auth) -->
+<div class="xl:col-span-8 flex flex-col gap-6">
+<!-- Main Auth Bento Box -->
+<section class="glass-card rounded-xl flex flex-col overflow-hidden relative mesh-bg">
+<div class="p-6 md:p-8 flex-1">
+<div class="flex items-start justify-between mb-8">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-white border border-slate-200 shadow-sm flex items-center justify-center relative overflow-hidden group">
+<span class="material-symbols-outlined text-blue-600 text-2xl z-10">api</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-slate-800 mb-1">Google Workspace OAuth</h3>
+<p class="text-sm text-slate-600">Manage credentials for Gmail &amp; Calendar API access.</p>
+</div>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200">
+<span class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_4px_#10b981] animate-pulse"></span>
+<span class="text-xs font-semibold text-emerald-700 tracking-wider uppercase">Active Connection</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<!-- Status Block: Credentials -->
+<div class="bg-white/60 p-4 rounded-lg border border-white shadow-sm flex flex-col gap-2 relative">
+<div class="flex justify-between items-start">
+<span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Client Credentials</span>
+<span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-slate-800 mb-0.5">credentials.json</h4>
+<p class="text-xs text-slate-500 font-mono">Loaded: /config/auth/gcp_creds...</p>
+</div>
+</div>
+<!-- Status Block: Tokens -->
+<div class="bg-white/60 p-4 rounded-lg border border-white shadow-sm flex flex-col gap-2 relative">
+<div class="flex justify-between items-start">
+<span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Access Token</span>
+<span class="material-symbols-outlined text-emerald-500 text-sm">check_circle</span>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-slate-800 mb-0.5">token.pickle</h4>
+<p class="text-xs text-slate-500 font-mono">Expires: 2024-05-20T14:30:00Z</p>
+</div>
+</div>
+</div>
+<!-- Upload Section -->
+<div class="mt-4 pt-6 border-t border-slate-200/50">
+<h4 class="text-sm font-bold text-slate-800 mb-4">Update Configuration</h4>
+<div class="flex flex-col md:flex-row gap-6">
+<div class="flex-1 space-y-4 text-sm text-slate-600">
+<p>To update system access, upload a new OAuth 2.0 Client ID payload from GCP.</p>
+<ol class="list-decimal pl-4 space-y-2 text-xs font-mono">
+<li>Navigate to <span class="text-blue-600 font-semibold">console.cloud.google.com</span></li>
+<li>Select project: <span class="bg-slate-200/50 px-1.5 py-0.5 rounded text-slate-800 font-semibold border border-slate-300/50">ai-cos-workspace</span></li>
+<li>Download JSON and upload here.</li>
+</ol>
+</div>
+<div class="flex-shrink-0 w-full md:w-64">
+<div class="border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center hover:border-blue-400 hover:bg-blue-50/50 transition-colors bg-white/50 group cursor-pointer h-full min-h-[140px] shadow-sm">
+<span class="material-symbols-outlined text-3xl text-slate-400 mb-2 group-hover:text-blue-500 transition-colors duration-300">cloud_upload</span>
+<span class="text-sm font-semibold text-slate-700 mb-1">Select credentials.json</span>
+<span class="text-xs text-slate-400 font-mono">Max size 2MB</span>
+</div>
+</div>
+</div>
+<div class="mt-6 flex justify-end gap-3">
+<button class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-colors border border-transparent hover:border-slate-300">
+                                        Revoke Access
+                                    </button>
+<button class="px-6 py-2 rounded-lg text-sm font-semibold text-white gradient-btn shadow-[0_4px_14px_0_rgba(139,92,246,0.39)]">
+                                        Save Configuration
+                                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary Integration Status -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="glass-card rounded-xl p-5 flex items-center gap-4 hover:bg-white/80 transition-colors group cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-white border border-slate-200 shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-amber-500 transition-colors">calendar_month</span>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-slate-800">Calendar Sync</h4>
+<p class="text-xs text-slate-500">Read/Write enabled</p>
+</div>
+<div class="w-3 h-3 rounded-full border border-slate-300 bg-slate-100 shadow-inner"></div>
+</div>
+<div class="glass-card rounded-xl p-5 flex items-center gap-4 hover:bg-white/80 transition-colors group cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-white border border-slate-200 shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-blue-500 transition-colors">smart_toy</span>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold text-slate-800">LLM Endpoint</h4>
+<p class="text-xs text-slate-500">Primary: GPT-4-Turbo</p>
+</div>
+<div class="w-3 h-3 rounded-full border border-emerald-200 bg-emerald-100 flex items-center justify-center shadow-sm">
+<div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+</body></html>

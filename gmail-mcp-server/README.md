@@ -89,18 +89,18 @@ npx -y @smithery/cli install @gongrzhe/server-gmail-autoauth-mcp --client claude
 
 3. Configure in Claude Desktop:
 
-   ```json
-   {
-     "mcpServers": {
-       "gmail": {
-         "command": "npx",
-         "args": [
-           "@gongrzhe/server-gmail-autoauth-mcp"
-         ]
-       }
-     }
-   }
-   ```
+```json
+{
+  "mcpServers": {
+    "gmail": {
+      "command": "npx",
+      "args": [
+        "@gongrzhe/server-gmail-autoauth-mcp"
+      ]
+    }
+  }
+}
+```
 
 ### Docker Support
 

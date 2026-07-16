@@ -184,4 +184,4 @@ export const filterTemplates = {
             removeLabelIds: archive ? ['INBOX'] : undefined
         }
     })
-};
+}; 

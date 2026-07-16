@@ -1,0 +1,23 @@
+[
+  {
+    "timestamp": "2026-06-19 00:00:15",
+    "model": "gemini-2.5-flash",
+    "subject": "Re: Q3 Budget Review",
+    "to": "Sarah Jenkins <sarah.j@company.com>",
+    "draft": "Got it \u2014 thanks for sending over the Q3 budget.\n\nI'll dive into the marketing allocation later this afternoon. I'll flag any adjustments to you by EOD tomorrow, well ahead of the Thursday review.thanks\n\nBest, Rahul"
+  },
+  {
+    "timestamp": "2026-06-19 00:01:41",
+    "model": "gemini-2.5-flash",
+    "subject": "Re: Beta launch timeline update",
+    "to": "Anil Kapoor <anil@company.com>",
+    "draft": "Got it \u2014 thanks for the update.\n\nLet's sync during our product meeting to review the details and align on the plan.\n\nBest, Rahul"
+  },
+  {
+    "timestamp": "2026-06-19 00:02:22",
+    "model": "gemini-2.5-flash",
+    "subject": "Re: Beta launch timeline update",
+    "to": "Anil Kapoor <anil@company.com>",
+    "draft": "Got it \u2014 thanks for the heads-up Priya, and the extra detail, Anil. A 3-day shift to the 23rd is fine. Priya, please update the project tracker \u2014 I'll flag this to stakeholders. We can quickly touch on it in tomorrow's sync if needed."
+  }
+]
