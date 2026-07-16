@@ -13,7 +13,7 @@ An elegant, production-ready AI-powered email triage and calendar management das
 ![AI Chief of Staff Main Dashboard](media/feature-active-threads.png)
 
 ### Live Usage Demo
-<video src="https://github.com/Rehansheikh787/Cheif-of-staff-Ai/raw/main/media/github-demo-merged.mp4" width="100%" controls></video>
+![AI Chief of Staff Interactive Usage Flow](media/github-demo-merged.mp4)
 
 ---
 
